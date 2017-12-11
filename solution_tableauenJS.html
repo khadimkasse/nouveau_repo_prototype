@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Probabilities and Properties on one insured</title>
+        <link href="css_page1.css" rel="stylesheet" type="text/css" media="screen">
+      
+    </head>
+   
+    
+    <body>
+        <center> <img height="110" width="110" src="./arr_plan_page_calc.jpeg"/><p>IZI Acturial Basic Formulas : Probabilities and Properties on one insured<br/>
+            Use the table below to choose the formula you wan to use </p> 
+        </center>
+        <div class = "tvtd">
+            <p>Choose the default table. By default the TD table will be set.<br/>
+            <p class="boutonTV">
+                <input type="button" id="tv" onclick="set_table(TV)" style="color: palevioletred;" value="TV" />
+                <input type="button" id="td" onclick="set_table(TD)" style="color: palevioletred;" value="TD" />
+            </p>
+        </div>
+        
+        <div class="formulas">
+
+            <p class="description">Description of the formulae
+                
+            </p>
+            <p class="param">Parameters </p>
+            <p class="computation"> Compute<!-- ce sera le bouton de calcul-->
+            </p>
+          
+            
+            
+
+        </div>
+
+        <div class="formulas">
+            <p class="alone">Survival probabilities at a given age</p>
+            
+        </div>
+        <script>
+                    function x(){
+                    var entree=document.getElementById("age1").value;
+                    //alert(entree);
+                    return entree;
+                    }
+            
+            
+                    function n(){
+                        var entree = document.getElementById("additiveAge").value;
+                        return entree;
+                    }
+            
+               function n(){
+                        var entree = document.getElementById("additiveAgem").value;
+                        return entree;
+                    }
+                </script>
+         <div class="formulas">
+
+            <p class="description">Probability to survive from age x to age x+1
+                <input type="button" id="px" onclick="window.open('px.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;" value="Details" />
+             </p>
+          
+             <p class="param" > age x = <input id ="age1" type="text" name="age" size="10"><!-- ajouter champ pour entrer valeur--></p>
+             
+          
+              
+     <script>  
+         
+         var lxTab = []; // TD or TV
+         var TD = []; //TD
+         var TV =[]; //TV
+       
+         TD[0]=100000;
+         TD[1]=99129;
+         TD[2]=99057;
+         TD[3]=99010;
+         TD[4]=98977;
+         TD[5]=98948;
+         TD[6]=98921;
+         TD[7]=98897;
+         TD[8]=98876;
+         TD[9]=98855;
+         TD[10]=98835;
+         TD[11]=98814;
+         TD[12]=98793;
+         TD[13]=98771;
+         TD[14]=98745;
+         TD[15]=98712;
+         TD[16]=98667;
+         TD[17]=98606;
+         TD[18]=98520;
+         TD[19]=98406;
+         TD[20]=98277;
+         TD[21]=98137;
+         TD[22]=97987;
+         TD[23]=97830;
+         TD[24]=97677;
+         TD[25]=97524;
+         TD[26]=97373;
+         TD[27]=97222;
+         TD[28]=97070;
+         TD[29]=96916;
+         TD[30]=96759;
+         TD[31]=96597;
+         TD[32]=96429;
+         TD[33]=96255;
+         TD[34]=96071;
+         TD[35]=95878;
+         TD[36]=95676;
+         TD[37]=95463;
+         TD[38]=95237;
+         TD[39]=94997;
+         TD[40]=94746;
+         TD[41]=94182;
+         TD[42]=93868;
+         TD[43]=93515;
+         TD[44]=93133;
+         TD[45]=92727;
+         TD[46]=92295;
+         TD[47]=91833;
+         TD[48]=91332;
+         TD[49]=90778;
+         TD[50]=90171;
+         TD[51]=89511;
+         TD[52]=88791;
+         TD[53]=88011;
+         TD[54]=87165;
+         TD[55]=86241;
+         TD[56]=85256;
+         TD[57]=84211;
+         TD[58]=83083;
+         TD[59]=81884;
+         TD[60]=80602;
+         TD[61]=79243;
+         TD[62]=77807;
+         TD[63]=76295;
+         TD[64]=74720;
+         TD[65]=73075;
+         TD[66]=71366;
+         TD[67]=69559;
+         TD[68]=67655;
+         TD[69]=65649;
+         TD[70]=63543;
+         TD[71]=61285;
+         TD[72]=58911;
+         TD[73]=56416;
+         TD[74]=53818;
+         TD[75]=51086;
+         TD[76]=48251;
+         TD[77]=45284;
+         TD[78]=42203;
+         TD[79]=39041;
+         TD[80]=35824;
+         TD[81]=32518;
+         TD[82]=29220;
+         TD[83]=25962;
+         TD[84]=22780;
+         TD[85]=19725;
+         TD[86]=16843;
+         TD[87]=14133;
+         TD[88]=11625;
+         TD[89]=9389;
+         TD[90]=7438;
+         TD[91]=5763;
+         TD[92]=4350;
+         TD[93]=3211;
+         TD[94]=2315;
+         TD[95]=1635;
+         TD[96]=1115;
+         TD[97]=740;
+         TD[98]=453;
+         TD[99]=263;
+         TD[100]=145;
+         TD[101]=76;
+         TD[102]=37;
+         TD[103]=17;
+         TD[104]=7;
+         TD[105]=2;
+         
+        TV[0]=100000;
+        TV[1]=99352;
+        TV[2]=99294;
+        TV[3]=99261;
+        TV[4]=99236;
+        TV[5]=99214;
+        TV[6]=99194;
+        TV[7]=99177;
+        TV[8]=99161;
+        TV[9]=99145;
+        TV[10]=99129;
+        TV[11]=99112;
+        TV[12]=99096;
+        TV[13]=99081;
+        TV[14]=99062;
+        TV[15]=99041;
+        TV[16]=99018;
+        TV[17]=98989;
+        TV[18]=98955;
+        TV[19]=98913;
+        TV[20]=98869;
+        TV[21]=98823;
+        TV[22]=98778;
+        TV[23]=98734;
+        TV[24]=98689;
+        TV[25]=98640;
+        TV[26]=98590;
+        TV[27]=98537;
+        TV[28]=98482;
+        TV[29]=98428;
+        TV[30]=98371;
+        TV[31]=98310;
+        TV[32]=98247;
+        TV[33]=98182;
+        TV[34]=98111;
+        TV[35]=98031;
+        TV[36]=97942;
+        TV[37]=97851;
+        TV[38]=97753;
+        TV[39]=97648;
+        TV[40]=97534;
+        TV[41]=97413;
+        TV[42]=97282;
+        TV[43]=97138;
+        TV[44]=96981;
+        TV[45]=96810;
+        TV[46]=96622;
+        TV[47]=96424;
+        TV[48]=96218;
+        TV[49]=95995;
+        TV[50]=95752;
+        TV[51]=95488;
+        TV[52]=95202;
+        TV[53]=94892;
+        TV[54]=94560;
+        TV[55]=94215;
+        TV[56]=93848;
+        TV[57]=93447;
+        TV[58]=93014;
+        TV[59]=92545;
+        TV[60]=92050;
+        TV[61]=91523;
+        TV[62]=90954;
+        TV[63]=90343;
+        TV[64]=89687;
+        TV[65]=88978;
+        TV[66]=88226;
+        TV[67]=87409;
+        TV[68]=86513;
+        TV[69]=85522;
+        TV[70]=84440;
+        TV[71]=83251;
+        TV[72]=81936;
+        TV[73]=80484;
+        TV[74]=78880;
+        TV[75]=77104;
+        TV[76]=75136;
+        TV[77]=72981;
+        TV[78]=70597;
+        TV[79]=67962;
+        TV[80]=65043;
+        TV[81]=61852;
+        TV[82]=58379;
+        TV[83]=54614;
+        TV[84]=50625;
+        TV[85]=46455;
+        TV[86]=42130;
+        TV[87]=37738;
+        TV[88]=33340;
+        TV[88]=28980;
+        TV[90]=24739;
+        TV[91]=20704;
+        TV[92]=16959;
+        TV[93]=13580;
+        TV[94]=10636;
+        TV[95]=8118;
+        TV[96]=6057;
+        TV[97]=4378;
+        TV[98]=3096;
+        TV[99]=2184;
+        TV[100]=1479;
+        TV[101]=961;
+        TV[102]=599;
+        TV[103]=358;
+        TV[104]=205;
+        TV[105]=113;
+        TV[106]=59;
+        TV[107]=30;
+        TV[108]=14;
+        TV[109]=6;
+        TV[110]=2;
+         
+    lxTab= TD // by default, if not set below
+
+     function set_table(table){ 
+         lxTab= table;
+         alert("The table was correctly set");
+     }
+         
+     function probability_surviving(y) {
+       
+         var suiv =parseFloat(y)+1;
+         var resToPrint = 100*lxTab[suiv]/lxTab[y];
+       alert(resToPrint+"%");
+     }
+         
+         
+
+     </script>
+             
+    <script>
+        function probability_not_surviving(x){
+         var suiv =parseFloat(x)+1;
+           
+        var varToPrint = 100*((lxTab[x]) - (lxTab[suiv]))/lxTab[x]; 
+        alert(varToPrint+"%");    
+    
+}
+        
+        function qx(x){
+             var suiv =parseFloat(x)+1;
+           
+            var varToPrint =((lxTab[x]) - (lxTab[suiv]))/lxTab[x];
+            return varToPrint;
+            
+        }
+
+function probability_surviving_n(x,n){
+     var suiv =parseFloat(x)+parseFloat(n);
+    var res = (((lxTab[suiv]))/lxTab[x]);
+        var varToPrint = 100*(((lxTab[suiv]))/lxTab[x]); 
+        alert(varToPrint+"%"); 
+    return res;
+    //return lx(x+n)/lx(x);
+}
+
+        
+        function nqx(x,n){
+         var suiv =parseFloat(x)+parseFloat(n);
+     var varToprint =((lxTab[x]-lxTab[suiv]))/lxTab[x];
+            return varToprint;
+        }
+function probability_not_surviving_n(x,n){
+     var suiv =parseFloat(x)+parseFloat(n);
+     var varToprint =100*((lxTab[x]-lxTab[suiv]))/lxTab[x];
+   // return (lx(x) - lx(x+n))/lx(x);
+      alert(varToprint+"%");
+}
+        
+        function npx(x,n){
+             var suiv =parseFloat(x)+parseFloat(n);
+        var res = (((lxTab[suiv]))/lxTab[x]);
+            return res;
+        }
+
+function probability_surviving_n_product(x,n){
+    var px =0;
+    var ind =0;
+     for (var i=0; i < n; i++) {
+         ind =parseFloat(i)+1;
+        px =px+ npx(x, i)* npx(x, ind);
+    }
+   var toPrint = 100*px;
+    alert(toPrint+"%"); 
+}
+function probability_surviving_n_plus_m(x,m,n){
+    var ind = parseFloat(x)+parseFloat(m);
+    var res = npx(x, m) * npx(ind, n); 
+    var v= 100*res;
+    alert(v+"%");
+}
+
+function alive_until_m(x,m){
+    var ind = parseFloat(x) + parseFloat(m);
+    var res =npx(x, m) * qx(ind);
+    var v = res*100;
+    alert(v+"%");
+}
+
+function alive_until_m_die_before_n_years(x, m){
+    var ind = parseFloat(x)+parseFloat(m);
+    var result= npx(x, m)*nqx(ind,m);
+    var v =100*result;
+    alert(v+"%");
+}
+
+function alive_until_m_then_die(x,m){
+    var ind =parseFloat(m)+1;
+    var res = npx (x, m)-npx(x,ind);
+    var v= 100*res;
+    alert(v+"%");
+}
+
+function alive_until_m_then_die_m_plus_n(x,m,n){
+    var ind = parseFloat(m)+parseFloat(n);
+     var res =npx(x, m)- npx(x,ind);
+    var v = res*100;
+    alert(v);
+}
+    </script>
+             
+             <script>
+                 var x1 = document.getElementById("age1").value
+             </script>
+             <p class="computation"><input type="button" id="compute_the_result" 
+                       onclick=probability_surviving(x1)  style="color: green; width: 250px;" value="Compute"/> </p>
+             
+            
+        </div>
+        
+         <div class="formulas">
+
+            <p class="description">Probability to survive from age x to age x+n (you survive n years after reaching age x)
+                <input type="button" id="compute_the_result" onclick="window.open('npx.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+              
+             
+             <p class="param"> age x =  <input type="text" id="age2" name="age" size="11"><br/>
+                                n = <input type="text"  id="additiveAge2" name="nyears" size="15"></p>
+             
+             <script>
+                 var x2 = document.getElementById("age2").value
+                 var n2 = document.getElementById("additiveAge2").value
+             </script>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick=probability_surviving_n(x2,n2) style="color: green;width: 250px;"value="Compute"  /> 
+             </p> <!-- ce sera le bouton de calcul-->
+          
+            
+        </div>
+        
+        <div class="formulas">
+            <p class="description"> probability to survive at the maximum age of the mortality table 
+                <input type="button" id="compute_the_result" onclick="window.open('w.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+            <p class="param"> x= &omega; (Default value)<!-- ajouter champ pour entrer valeur--></p>
+            
+            <p class="computation">
+                <!--<input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green;"value="Compute" /> -->
+             </p> 
+            <p class="result"> 0</p>
+        </div>
+        
+         <div class="formulas">
+            <p class="alone">Death probabilities before a given age</p> 
+        </div>
+        
+         <div class="formulas">
+            <p class="description"> probability to die between age x and age x+1 
+                <input type="button" id="compute_the_result" onclick="window.open('qx.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+            <p class="param"> age x =  <input type="text" id="age3" name="age" size="10"></p>
+            <p class="computation">
+                <script>
+                 var x3 = document.getElementById("age3").value
+                
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+            
+        </div>
+        
+          <div class="formulas">
+            <p class="description"> probability to die between age x and age x+n 
+                <input type="button" id="compute_the_result" onclick="window.open('nqx.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+            <p class="param"> age x =  <input type="text" id="age4" name="age" size="11"><br/>
+                                n = <input type="text" id="additiveAge4" name="nyears" size="15"></p>
+            <p class="computation">
+                <script>
+                      var x4 = document.getElementById("age4").value
+                 var n4 = document.getElementById("additiveAge4").value
+                </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving_n(x4,n4)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+            
+        </div>
+        
+            <div class="formulas">
+            <p class="description"> probability to die at the maximum age of the mortality table &omega; 
+                <input type="button" id="compute_the_result" onclick="window.open('qw.html','popup','width=350,height=180,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+            <p class="param"> age x= &omega; (Default value)</p>
+            <p class="computation">
+                 
+             </p> 
+            <p class="result"> 1 </p>
+        </div>
+        
+         <div class="formulas">
+            <p class="alone">Properties</p> 
+        </div>
+        
+          <div class="formulas">
+            <p class="description"> probability of life after n years : you live from age x to age x+1 and from age x+1 to age x+2 and so on until age x+n 
+                <input type="button" id="compute_the_result" onclick="window.open('npxProp.html','popup','width=350,height=180,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text" id="age5" name="age" size="11"><br/>
+                                n = <input type="text" id="additiveAge5" name="nyears" size="15"></p>
+            <p class="computation">
+                <script>
+                      var x5 = document.getElementById("age5").value
+                 var n5 = document.getElementById("additiveAge5").value
+                </script>
+                <input type="button" id="compute_the_result" onclick="probability_surviving_n_product(x5,n5)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+            
+        </div>
+        
+        <div class="formulas">
+            <p class="description"> probability of life after m+n years : you live from age x to age x+m and from age x+m to x+m+n 
+                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text" id="age6" name="age" size="11"><br/>
+                                n = <input type="text"  id="additiveAge6" name="nyears" size="15"><br/>
+                                m= <input type="text" id="additiveAgem6" name="myears" size="15">
+            </p>
+            <p class="computation">
+                <script>
+                      var x6 = document.getElementById("age6").value
+                        var n6 = document.getElementById("additiveAge6").value
+                         var m6 = document.getElementById("additiveAgem6").value
+                </script>
+                <input type="button" id="compute_the_result" onclick="probability_surviving_n_plus_m(x6,m6,n6)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+            
+        </div>
+        
+        <div class="formulas">
+            <p class="description"> probability to stay alive until m and then die the following year i.e. before age x+m+1 
+                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text"  id="age7" name="age" size="11"><br/>
+                                m = <input type="text" id="additiveAge7" name="myears" size="15"><br/>
+                               
+            </p>
+            <p class="computation">
+                <script>
+                    var x7 = document.getElementById("age7").value
+                        var n7 = document.getElementById("additiveAge7").value
+                </script>
+                <input type="button" id="compute_the_result" onclick="alive_until_m(x7,n7)" style="color: green; width: 250px;"value="Compute" /> 
+             </p> 
+            
+        </div>
+        
+         <div class="formulas">
+            <p class="description"> probability to stay alive until m and then die before x+m+n 
+                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text"  id="age8" name="age" size="11"><br/>
+                                m = <input type="text" id="additiveAgem8" name="myears" size="15"><br/>
+                                n= <input type="text" id="additiveAge8" name="nyears" size="15">
+                               
+            </p>
+            <p class="computation">
+                <script>
+                    var x8 = document.getElementById("age8").value
+                        var n8 = document.getElementById("additiveAge8").value
+                         var m8 = document.getElementById("additiveAgem8").value
+                </script>
+                <input type="button" id="compute_the_result" onclick="alive_until_m_then_die(x8,m8,n8)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+            
+        </div>
+        
+        
+         <div class="formulas">
+            <p class="description"> probability to stay alive until m but not in m+1 i.e; you die before x+m+1 
+                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text" id="age9" name="age" size="11"><br/>
+                                m = <input type="text" id="additiveAgem9" name="myears" size="15"><br/>
+                               
+            </p>
+            <p class="computation">
+                    <script>
+                        
+                           var x9 = document.getElementById("age9").value
+                        var m9 = document.getElementById("additiveAgem9").value
+                    </script>
+                        
+                <input type="button" id="compute_the_result" onclick=alive_until_m_then_die(x9,m9) style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+            
+        </div>
+        
+           <div class="formulas">
+            <p class="description"> probability to stay alive until m  but not in m+n
+                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text"  id =" age10" name="age" size="11"><br/>
+                                m = <input type="text" id="additiveAgem10" name="myears" size="14"><br/>
+                                n = <input type="text"  id="additiveAge10" name="nyears" size="15">
+                               
+            </p>
+            <p class="computation">
+                <script>
+                    var x10 = document.getElementById("age10").value
+                        var n10 = document.getElementById("additiveAge10").value
+                         var m10 = document.getElementById("additiveAgem10").value
+                </script>
+                <input type="button" id="compute_the_result" onclick="alive_until_m_then_die_m_plus_n(x10,m10,n10)" style="color: green; width: 250px;"value="Compute"  /> 
+             </p> 
+            
+        </div>
+        
+      
+        
+        
+        
+    </body>
+</html>
