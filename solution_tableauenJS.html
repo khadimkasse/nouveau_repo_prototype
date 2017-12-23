@@ -9,8 +9,9 @@
     
     <body>
         <center> <img height="110" width="110" src="./arr_plan_page_calc.jpeg"/><p>IZI Acturial Basic Formulas : Probabilities and Properties on one insured<br/>
-            Use the table below to choose the formula you wan to use </p> 
+            Use the table below to choose the formula you want to use </p> 
         </center>
+
         <div class = "tvtd">
             <p>Choose the default table. By default the TD table will be set.<br/>
             <p class="boutonTV">
@@ -18,7 +19,7 @@
                 <input type="button" id="td" onclick="set_table(TD)" style="color: palevioletred;" value="TD" />
             </p>
         </div>
-        
+
         <div class="formulas">
 
             <p class="description">Description of the formulae
@@ -37,35 +38,18 @@
             <p class="alone">Survival probabilities at a given age</p>
             
         </div>
-        <script>
-                    function x(){
-                    var entree=document.getElementById("age1").value;
-                    //alert(entree);
-                    return entree;
-                    }
-            
-            
-                    function n(){
-                        var entree = document.getElementById("additiveAge").value;
-                        return entree;
-                    }
-            
-               function n(){
-                        var entree = document.getElementById("additiveAgem").value;
-                        return entree;
-                    }
-                </script>
+    
          <div class="formulas">
 
             <p class="description">Probability to survive from age x to age x+1
                 <input type="button" id="px" onclick="window.open('px.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;" value="Details" />
              </p>
           
-             <p class="param" > age x = <input id ="age1" type="text" name="age" size="10"><!-- ajouter champ pour entrer valeur--></p>
+             <p class="param" > age x = <input id ="age1" type="text" name="age" size="10"> years<!-- ajouter champ pour entrer valeur--></p>
              
           
               
-     <script>  
+             <script>  
          
          var lxTab = []; // TD or TV
          var TD = []; //TD
@@ -296,12 +280,39 @@
          lxTab= table;
          alert("The table was correctly set");
      }
+        //fonctions de base 
+           function qx(x){
+             var suiv =parseFloat(x)+1;
+           
+            var varToPrint =((lxTab[x]) - (lxTab[suiv]))/lxTab[x];
+            return varToPrint;
+            
+        }
          
+         
+            function nqx(x,n){
+         var suiv =parseFloat(x)+parseFloat(n);
+     var varToprint =((lxTab[x]-lxTab[suiv]))/lxTab[x];
+            return varToprint;
+        }
+         
+         
+          function npx(x,n){
+             var suiv =parseFloat(x)+parseFloat(n);
+        var res = (((lxTab[suiv]))/lxTab[x]);
+            return res;
+        }
+         
+         function px(x){
+            var suiv =parseFloat(x)+1;
+            var resToPrint = lxTab[suiv]/lxTab[x];
+             
+             return resToPrint;
+         }
+
      function probability_surviving(y) {
-       
-         var suiv =parseFloat(y)+1;
-         var resToPrint = 100*lxTab[suiv]/lxTab[y];
-       alert(resToPrint+"%");
+         var resToPrint = 100*px(y);
+       alert("Your probability to live until next year is : "+resToPrint.toFixed(2)+"%");
      }
          
          
@@ -309,49 +320,31 @@
      </script>
              
     <script>
-        function probability_not_surviving(x){
-         var suiv =parseFloat(x)+1;
-           
-        var varToPrint = 100*((lxTab[x]) - (lxTab[suiv]))/lxTab[x]; 
-        alert(varToPrint+"%");    
+        function probability_not_surviving(x){  
+        var varToPrint = 100*qx(x);
+        alert("Your probabilitty to die before the next year is : "+varToPrint.toFixed(2)+"%");    
     
 }
         
-        function qx(x){
-             var suiv =parseFloat(x)+1;
-           
-            var varToPrint =((lxTab[x]) - (lxTab[suiv]))/lxTab[x];
-            return varToPrint;
-            
-        }
+      
 
 function probability_surviving_n(x,n){
-     var suiv =parseFloat(x)+parseFloat(n);
-    var res = (((lxTab[suiv]))/lxTab[x]);
-        var varToPrint = 100*(((lxTab[suiv]))/lxTab[x]); 
-        alert(varToPrint+"%"); 
-    return res;
+        var unt = parseInt(x)+parseFloat(n);
+        var varToPrint = 100*npx(x,n); 
+        alert("Your probability to survive until age "+unt +" is : "+varToPrint.toFixed(2)+"%"); 
+    //return res;
     //return lx(x+n)/lx(x);
 }
 
         
-        function nqx(x,n){
-         var suiv =parseFloat(x)+parseFloat(n);
-     var varToprint =((lxTab[x]-lxTab[suiv]))/lxTab[x];
-            return varToprint;
-        }
+     
 function probability_not_surviving_n(x,n){
-     var suiv =parseFloat(x)+parseFloat(n);
-     var varToprint =100*((lxTab[x]-lxTab[suiv]))/lxTab[x];
-   // return (lx(x) - lx(x+n))/lx(x);
-      alert(varToprint+"%");
+    var unt = parseInt(x)+parseFloat(n);
+     var varToprint =100*nqx(x,n);
+      alert("Your probability to die before "+unt +" years is : "+varToprint.toFixed(2)+"%");
 }
         
-        function npx(x,n){
-             var suiv =parseFloat(x)+parseFloat(n);
-        var res = (((lxTab[suiv]))/lxTab[x]);
-            return res;
-        }
+       
 
 function probability_surviving_n_product(x,n){
     var px =0;
@@ -365,23 +358,24 @@ function probability_surviving_n_product(x,n){
 }
 function probability_surviving_n_plus_m(x,m,n){
     var ind = parseFloat(x)+parseFloat(m);
+    var tot =  parseFloat(m)+parseFloat(n);
     var res = npx(x, m) * npx(ind, n); 
     var v= 100*res;
-    alert(v+"%");
+    alert("Your probability to live until "+tot+" is : "+ v.toFixed(2)+"%");
 }
 
 function alive_until_m(x,m){
     var ind = parseFloat(x) + parseFloat(m);
     var res =npx(x, m) * qx(ind);
     var v = res*100;
-    alert(v+"%");
+    alert("your probability stay alive until "+ind+" and then die the following year is : "+v.toFixed(2)+"%");
 }
 
 function alive_until_m_die_before_n_years(x, m){
     var ind = parseFloat(x)+parseFloat(m);
     var result= npx(x, m)*nqx(ind,m);
     var v =100*result;
-    alert(v+"%");
+    alert("your probability stay alive until "+ind+" and then die the following year is : "+v.toFixed(2)+"%");
 }
 
 function alive_until_m_then_die(x,m){
@@ -393,9 +387,11 @@ function alive_until_m_then_die(x,m){
 
 function alive_until_m_then_die_m_plus_n(x,m,n){
     var ind = parseFloat(m)+parseFloat(n);
+    var live =  parseFloat(x)+parseFloat(m);
+    var die = parseFloat(m)+parseFloat(n)+parseFloat(x);
      var res =npx(x, m)- npx(x,ind);
     var v = res*100;
-    alert(v);
+    alert("Your probability to stay alive until "+live+ " and then die before "+die+" is : "+v.toFixed(2)+"%");
 }
     </script>
              
@@ -415,8 +411,8 @@ function alive_until_m_then_die_m_plus_n(x,m,n){
              </p>
               
              
-             <p class="param"> age x =  <input type="text" id="age2" name="age" size="11"><br/>
-                                n = <input type="text"  id="additiveAge2" name="nyears" size="15"></p>
+             <p class="param"> age x =  <input type="text" id="age2" name="age" size="11"> years<br/>
+                                n = <input type="text"  id="additiveAge2" name="nyears" size="10">years (more)</p>
              
              <script>
                  var x2 = document.getElementById("age2").value
@@ -435,9 +431,7 @@ function alive_until_m_then_die_m_plus_n(x,m,n){
              </p>
             <p class="param"> x= &omega; (Default value)<!-- ajouter champ pour entrer valeur--></p>
             
-            <p class="computation">
-                <!--<input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green;"value="Compute" /> -->
-             </p> 
+         
             <p class="result"> 0</p>
         </div>
         
@@ -449,7 +443,7 @@ function alive_until_m_then_die_m_plus_n(x,m,n){
             <p class="description"> probability to die between age x and age x+1 
                 <input type="button" id="compute_the_result" onclick="window.open('qx.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
              </p>
-            <p class="param"> age x =  <input type="text" id="age3" name="age" size="10"></p>
+            <p class="param"> age x =  <input type="text" id="age3" name="age" size="10"> years</p>
             <p class="computation">
                 <script>
                  var x3 = document.getElementById("age3").value
@@ -464,8 +458,8 @@ function alive_until_m_then_die_m_plus_n(x,m,n){
             <p class="description"> probability to die between age x and age x+n 
                 <input type="button" id="compute_the_result" onclick="window.open('nqx.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
              </p>
-            <p class="param"> age x =  <input type="text" id="age4" name="age" size="11"><br/>
-                                n = <input type="text" id="additiveAge4" name="nyears" size="15"></p>
+            <p class="param"> age x =  <input type="text" id="age4" name="age" size="11"> years<br/>
+                                n = <input type="text" id="additiveAge4" name="nyears" size="10">years (more)</p>
             <p class="computation">
                 <script>
                       var x4 = document.getElementById("age4").value
@@ -481,9 +475,7 @@ function alive_until_m_then_die_m_plus_n(x,m,n){
                 <input type="button" id="compute_the_result" onclick="window.open('qw.html','popup','width=350,height=180,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
              </p>
             <p class="param"> age x= &omega; (Default value)</p>
-            <p class="computation">
-                 
-             </p> 
+           
             <p class="result"> 1 </p>
         </div>
         
@@ -491,31 +483,16 @@ function alive_until_m_then_die_m_plus_n(x,m,n){
             <p class="alone">Properties</p> 
         </div>
         
-          <div class="formulas">
-            <p class="description"> probability of life after n years : you live from age x to age x+1 and from age x+1 to age x+2 and so on until age x+n 
-                <input type="button" id="compute_the_result" onclick="window.open('npxProp.html','popup','width=350,height=180,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
-             </p>
-            
-            <p class="param"> age x =  <input type="text" id="age5" name="age" size="11"><br/>
-                                n = <input type="text" id="additiveAge5" name="nyears" size="15"></p>
-            <p class="computation">
-                <script>
-                      var x5 = document.getElementById("age5").value
-                 var n5 = document.getElementById("additiveAge5").value
-                </script>
-                <input type="button" id="compute_the_result" onclick="probability_surviving_n_product(x5,n5)" style="color: green;width: 250px;"value="Compute" /> 
-             </p> 
-            
-        </div>
+          
         
         <div class="formulas">
             <p class="description"> probability of life after m+n years : you live from age x to age x+m and from age x+m to x+m+n 
-                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+                <input type="button" id="compute_the_result" onclick="window.open('mPlusn.html','popup','width=450,height=280,left=200,top=200,scrollbars=1')"  style="color: palevioletred;"value="Details" />
              </p>
             
-            <p class="param"> age x =  <input type="text" id="age6" name="age" size="11"><br/>
-                                n = <input type="text"  id="additiveAge6" name="nyears" size="15"><br/>
-                                m= <input type="text" id="additiveAgem6" name="myears" size="15">
+            <p class="param"> age x =  <input type="text" id="age6" name="age" size="11"> years<br/>
+                                n = <input type="text"  id="additiveAge6" name="nyears" size="10"> years (more)<br/>
+                                m= <input type="text" id="additiveAgem6" name="myears" size="10"> years (more)
             </p>
             <p class="computation">
                 <script>
@@ -530,11 +507,11 @@ function alive_until_m_then_die_m_plus_n(x,m,n){
         
         <div class="formulas">
             <p class="description"> probability to stay alive until m and then die the following year i.e. before age x+m+1 
-                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+                <input type="button" id="compute_the_result" onclick="window.open('mPlusun.html','popup','width=450,height=280,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
              </p>
             
-            <p class="param"> age x =  <input type="text"  id="age7" name="age" size="11"><br/>
-                                m = <input type="text" id="additiveAge7" name="myears" size="15"><br/>
+            <p class="param"> age x =  <input type="text"  id="age7" name="age" size="11"> years <br/>
+                                m = <input type="text" id="additiveAge7" name="myears" size="9"> years (more)<br/>
                                
             </p>
             <p class="computation">
@@ -549,12 +526,12 @@ function alive_until_m_then_die_m_plus_n(x,m,n){
         
          <div class="formulas">
             <p class="description"> probability to stay alive until m and then die before x+m+n 
-                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+                <input type="button" id="compute_the_result" onclick="window.open('alive_til_mPlusn.html','popup','width=450,height=280,left=200,top=200,scrollbars=1')"  style="color: palevioletred;"value="Details" />
              </p>
             
-            <p class="param"> age x =  <input type="text"  id="age8" name="age" size="11"><br/>
-                                m = <input type="text" id="additiveAgem8" name="myears" size="15"><br/>
-                                n= <input type="text" id="additiveAge8" name="nyears" size="15">
+            <p class="param"> age x =  <input type="text"  id="age8" name="age" size="11">years<br/>
+                                m = <input type="text" id="additiveAgem8" name="myears" size="9"> years (more)<br/>
+                                n= <input type="text" id="additiveAge8" name="nyears" size="9"> years (more)
                                
             </p>
             <p class="computation">
@@ -563,54 +540,13 @@ function alive_until_m_then_die_m_plus_n(x,m,n){
                         var n8 = document.getElementById("additiveAge8").value
                          var m8 = document.getElementById("additiveAgem8").value
                 </script>
-                <input type="button" id="compute_the_result" onclick="alive_until_m_then_die(x8,m8,n8)" style="color: green;width: 250px;"value="Compute" /> 
+                <input type="button" id="compute_the_result" onclick="alive_until_m_then_die_m_plus_n(x8,m8,n8)" style="color: green;width: 250px;"value="Compute" /> 
              </p> 
             
         </div>
         
         
-         <div class="formulas">
-            <p class="description"> probability to stay alive until m but not in m+1 i.e; you die before x+m+1 
-                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
-             </p>
-            
-            <p class="param"> age x =  <input type="text" id="age9" name="age" size="11"><br/>
-                                m = <input type="text" id="additiveAgem9" name="myears" size="15"><br/>
-                               
-            </p>
-            <p class="computation">
-                    <script>
-                        
-                           var x9 = document.getElementById("age9").value
-                        var m9 = document.getElementById("additiveAgem9").value
-                    </script>
-                        
-                <input type="button" id="compute_the_result" onclick=alive_until_m_then_die(x9,m9) style="color: green;width: 250px;"value="Compute" /> 
-             </p> 
-            
-        </div>
-        
-           <div class="formulas">
-            <p class="description"> probability to stay alive until m  but not in m+n
-                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
-             </p>
-            
-            <p class="param"> age x =  <input type="text"  id =" age10" name="age" size="11"><br/>
-                                m = <input type="text" id="additiveAgem10" name="myears" size="14"><br/>
-                                n = <input type="text"  id="additiveAge10" name="nyears" size="15">
-                               
-            </p>
-            <p class="computation">
-                <script>
-                    var x10 = document.getElementById("age10").value
-                        var n10 = document.getElementById("additiveAge10").value
-                         var m10 = document.getElementById("additiveAgem10").value
-                </script>
-                <input type="button" id="compute_the_result" onclick="alive_until_m_then_die_m_plus_n(x10,m10,n10)" style="color: green; width: 250px;"value="Compute"  /> 
-             </p> 
-            
-        </div>
-        
+         
       
         
         

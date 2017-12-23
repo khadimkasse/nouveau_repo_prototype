@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Life Insurance Contract</title>
+        <link href="css_page1.css" rel="stylesheet" type="text/css" media="screen">
+      
+    </head>
+   
+    
+    <body>
+        <center> <img height="110" width="110" src="./arr_plan_page_calc.jpeg"/><p>IZI Acturial Death Insurance Contract : Insurance in case of death on one insured<br/>
+            Use the table below to choose the formula you want to use </p> 
+        </center>
+        <div class="formulas">
+
+            <p class="description">Description of the formulae
+                
+            </p>
+            <p class="param">Parameters </p>
+            <p class="computation"> Compute<!-- ce sera le bouton de calcul-->
+            </p>
+          
+            
+            
+
+        </div>
+
+        <div class="formulas">
+            <p class="alone"> </p>
+            
+        </div>
+    
+         <div class="formulas"> Insurances in case of Life
+
+            <p class="description" id="PE">Pure Endowment : it's a life insurance contract designed to pay a lump sum after a specified term called the maturity of the contract.
+                <input type="button" id="pe" onclick="window.open('pureEndowment.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;" value="Details" />
+             </p>
+          
+             <p class="param" > age x = <input id ="age1" type="text" name="age" size="10"> years<!-- ajouter champ pour entrer valeur-->
+                                 term = <input id ="maturity1" type="text" name="maturity" size="5"> years<br/>
+                                  benefit (capital) = <input id ="benefit1" type="text" name="benef" size="6"> &euro; </p>
+             <script>
+                 var x1 = document.getElementById("age1").value
+                 var mat1= document.getElementById("maturity1").value
+                 var ben= document.getElementById("benefit1").value
+             </script>
+             <p class="computation"><input type="button" id="compute_the_result" 
+                       onclick=probability_surviving(x1)  style="color: green; width: 250px;" value="Compute"/> </p>
+             
+            
+        </div>
+             
+          
+              
+     <script>  
+         
+         var lxTab= new Array(); // TD
+       
+         lxTab[0]=100000;
+         lxTab[1]=99129;
+         lxTab[2]=99057;
+         lxTab[3]=99010;
+         lxTab[4]=98977;
+         lxTab[5]=98948;
+         lxTab[6]=98921;
+         lxTab[7]=98897;
+         lxTab[8]=98876;
+         lxTab[9]=98855;
+         lxTab[10]=98835;
+         lxTab[11]=98814;
+         lxTab[12]=98793;
+         lxTab[13]=98771;
+         lxTab[14]=98745;
+         lxTab[15]=98712;
+         lxTab[16]=98667;
+         lxTab[17]=98606;
+         lxTab[18]=98520;
+         lxTab[19]=98406;
+         lxTab[20]=98277;
+         lxTab[21]=98137;
+         lxTab[22]=97987;
+         lxTab[23]=97830;
+         lxTab[24]=97677;
+         lxTab[25]=97524;
+         lxTab[26]=97373;
+         lxTab[27]=97222;
+         lxTab[28]=97070;
+         lxTab[29]=96916;
+         lxTab[30]=96759;
+         lxTab[31]=96597;
+         lxTab[32]=96429;
+         lxTab[33]=96255;
+         lxTab[34]=96071;
+         lxTab[35]=95878;
+         lxTab[36]=95676;
+         lxTab[37]=95463;
+         lxTab[38]=95237;
+         lxTab[39]=94997;
+         lxTab[40]=94746;
+         lxTab[41]=94182;
+         lxTab[42]=93868;
+         lxTab[43]=93515;
+         lxTab[44]=93133;
+         lxTab[45]=92727;
+         lxTab[46]=92295;
+         lxTab[47]=91833;
+         lxTab[48]=91332;
+         lxTab[49]=90778;
+         lxTab[50]=90171;
+         lxTab[51]=89511;
+         lxTab[52]=88791;
+         lxTab[53]=88011;
+         lxTab[54]=87165;
+         lxTab[55]=86241;
+         lxTab[56]=85256;
+         lxTab[57]=84211;
+         lxTab[58]=83083;
+         lxTab[59]=81884;
+         lxTab[60]=80602;
+         lxTab[61]=79243;
+         lxTab[62]=77807;
+         lxTab[63]=76295;
+         lxTab[64]=74720;
+         lxTab[65]=73075;
+         lxTab[66]=71366;
+         lxTab[67]=69559;
+         lxTab[68]=67655;
+         lxTab[69]=65649;
+         lxTab[70]=63543;
+         lxTab[71]=61285;
+         lxTab[72]=58911;
+         lxTab[73]=56416;
+         lxTab[74]=53818;
+         lxTab[75]=51086;
+         lxTab[76]=48251;
+         lxTab[77]=45284;
+         lxTab[78]=42203;
+         lxTab[79]=39041;
+         lxTab[80]=35824;
+         lxTab[81]=32518;
+         lxTab[82]=29220;
+         lxTab[83]=25962;
+         lxTab[84]=22780;
+         lxTab[85]=19725;
+         lxTab[86]=16843;
+         lxTab[87]=14133;
+         lxTab[88]=11625;
+         lxTab[89]=9389;
+         lxTab[90]=7438;
+         lxTab[91]=5763;
+         lxTab[92]=4350;
+         lxTab[93]=3211;
+         lxTab[94]=2315;
+         lxTab[95]=1635;
+         lxTab[96]=1115;
+         lxTab[97]=740;
+         lxTab[98]=453;
+         lxTab[99]=263;
+         lxTab[100]=145;
+         lxTab[101]=76;
+         lxTab[102]=37;
+         lxTab[103]=17;
+         lxTab[104]=7;
+         lxTab[105]=2;
+         
+         
+
+        </script>
+             
+        <div class="formulas">
+            <p class="alone">Life Annuities :<br/>
+                <center>A life annuity is a contract that pays periodically a certain amount up to the death of the annuitant.<br/>
+                    Generally speaking, an annuitant buys a life annuity and makes installment payments for it throughout his working life.<br/>
+                    A life annuity is designed to provide a stable income for the annuitant in retirement.
+                </center>
+            </p>
+            
+        </div>
+         <div class="formulas">
+
+            <p class="description"><B>Life Annuities due at the end of the year</B>
+                
+            </p>
+            <p class="param"></p>
+            <p class="computation"> <!-- ce sera le bouton de calcul-->
+            </p>
+          
+            
+            
+
+        </div>
+        
+         <div class="formulas">
+
+            <p class="description" id="upDeath">Up to the death : The amount is given at the end of each year, up to the death
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityUpTodeathEndY.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+              
+             
+             <p class="param"> age x =  <input type="text" id="age2" name="age" size="11"> years<br/>
+                                benefit (capital) = <input id ="benefit2" type="text" name="benef" size="6"> &euro;  </p>
+                                
+             
+             <script>
+                 var x2 = document.getElementById("age2").value
+                var ben = document.getElementById("benefit2").value
+             </script>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick=probability_surviving_n(x2,n2) style="color: green;width: 250px;"value="Compute"  /> 
+             </p> 
+            
+        </div>
+         <div class="formulas">
+             <p class="description"> Temporary: the amount is given at the end of each year up to the death but for n years at most
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityTempEndY.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+            </p>
+            <p class="param"> age x = <input type="text" id="age3" name="age" size="10"> years<br/>
+                            n (term)= <input type="text" id="additiveAgem3" name="nyears" size="5">years<br/>
+                             benefit (capital) = <input id ="benefit3" type="text" name="benef" size="6"> &euro; 
+                            </p>
+            <p class="computation">
+                <script>
+                 var x3 = document.getElementById("age3").value
+                 var m3 = document.getElementById("additiveAgem3").value
+                var ben3 = document.getElementById("benefit3").value
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+        </div>
+        <div class="formulas">
+            <p class="description"> Defered : the amount is given at the end of each year up to the death but, with a deferment m years
+                <input type="button" id="compute_the_result" onclick="window.open('lifeannuityDeffEndY.html','popup','width=360,height=360,left=300,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+            </p>
+            <p class="param"> age x = <input type="text" id="age4" name="age" size="10"> years<br/>
+                            differed time m= <input type="text" id="additiveAgem4" name="nyears" size="5">years<br/>
+                            benefit (capital) = <input id ="benefit4" type="text" name="benef" size="6"> &euro;</p>
+            <p class="computation">
+                <script>
+                 var x4 = document.getElementById("age4").value
+                 var m4 = document.getElementById("additiveAgem4").value
+                 var ben4 = document.getElementById("benefit4").value
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+        </div>
+        <div class="formulas">
+            <p class="description"> Temporary (n) and deferred(m) : the amount is given at the end of each year up to the death but, for n years at most with deferment m years.
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityTempAndDefEndY.html','popup','width=360,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+            </p>
+            <p class="param"> age x = <input type="text" id="age5" name="age" size="10"> years<br/>
+                             n(term) = <input type="text" id="additiveAge5" name="nyears" size="5"> years<br/>
+                             m(deferment) <input type="text" id="additiveAgem5" name="nyears" size="5">years<br/>
+                            benefit (capital) = <input id ="benefit5" type="text" name="benef" size="6"> &euro;
+                               </p>
+            <p class="computation">
+                <script>
+                 var x5 = document.getElementById("age5").value
+                 var n5 = document.getElementById("additiveAge5").value
+                 var m5 = document.getElementById("additiveAgem5").value
+                  var ben5 = document.getElementById("benefit5").value
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+        </div>
+        
+        <div class="formulas">
+
+            <p class="description"><B>Life Annuities due at the beginning of the year</B>
+                
+            </p>
+            <p class="param"></p>
+            <p class="computation"> <!-- ce sera le bouton de calcul-->
+            </p>
+          
+            
+            
+
+        </div>
+        
+         <div class="formulas">
+
+            <p class="description" id="upDeath">Up to the death : The amount is given at the beginning of each year, up to the death
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityUpTodeathBegY.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+              
+             
+             <p class="param"> age x =  <input type="text" id="age6" name="age" size="11"> years<br/>
+                 benefit (capital) = <input id ="benefit6" type="text" name="benef" size="6"> &euro;</p>
+                                
+             
+             <script>
+                 var x6 = document.getElementById("age6").value
+                 var ben6 = document.getElementById("benefit6").value
+             
+             </script>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick=probability_surviving_n(x2,n2) style="color: green;width: 250px;"value="Compute"  /> 
+             </p> 
+            
+        </div>
+         <div class="formulas">
+             <p class="description"> Temporary: the amount is given at the beginning of each year up to the death but for n years at most
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityTempBegY.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+            </p>
+            <p class="param"> age x = <input type="text" id="age7" name="age" size="10"> years<br/>
+                            n (term)= <input type="text" id="additiveAgem7" name="nyears" size="5">years<br/>
+                            benefit (capital) = <input id ="benefit7" type="text" name="benef" size="6"> &euro;</p>
+            <p class="computation">
+                <script>
+                 var x7 = document.getElementById("age7").value
+                 var m7 = document.getElementById("additiveAgem7").value
+                 var ben7 = document.getElementById("benefit7").valye
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+        </div>
+        <div class="formulas">
+            <p class="description"> Defered : the amount is given at the beginning of each year up to the death but, with a deferment m years
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityDefBegY.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+            </p>
+            <p class="param"> age x = <input type="text" id="age8" name="age" size="10"> years<br/>
+                            differed time m= <input type="text" id="additiveAgem8" name="nyears" size="5">years<br/>
+                            benefit (capital) = <input id ="benefit8" type="text" name="benef" size="6"> &euro;
+            </p>
+            <p class="computation">
+                <script>
+                 var x8 = document.getElementById("age8").value
+                 var m8 = document.getElementById("additiveAgem8").value
+                 var ben8 = document.getElementById("benefit8").value
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+        </div>
+        <div class="formulas">
+            <p class="description"> Temporary (n) and deferred(m) : the amount is given at the beginning of each year up to the death but, for n years at most with deferment m years.
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityTempAndDefBegY.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+            </p>
+            <p class="param"> age x = <input type="text" id="age9" name="age" size="10"> years<br/>
+                             n(term) = <input type="text" id="additiveAge9" name="nyears" size="5"> years<br/>
+                             m(deferment) <input type="text" id="additiveAgem9" name="nyears" size="5">years<br/>
+                            benefit (capital) = <input id ="benefit9" type="text" name="benef" size="6"> &euro;</p>
+            <p class="computation">
+                <script>
+                 var x9 = document.getElementById("age9").value
+                 var n9 = document.getElementById("additiveAge9").value
+                 var m9 = document.getElementById("additiveAgem9").value
+                 var ben9 = document.getElementById("benefit9").value
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+        </div>
+        <div class="formulas">
+
+            <p class="description"><B>Life Annuities with several payments each year, due at the end of the period </B>
+                
+            </p>
+            <p class="param"></p>
+            <p class="computation"> <!-- ce sera le bouton de calcul-->
+            </p>
+          
+            
+            
+
+        </div>
+        
+         <div class="formulas">
+
+            <p class="description" id="upDeath">Up to the death : The amount is given at the end of each period, up to the death
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityEndPeriodUpdeath.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+              
+             
+             <p class="param"> age x =  <input type="text" id="age10" name="age" size="11"> years
+                                number of payments in the year k  <input type="text" id="k10"  size="12"><br/>
+                 benefit (capital) = <input id ="benefit10" type="text" name="benef" size="6"> &euro;</p>
+                                
+             
+             <script>
+                 var x10 = document.getElementById("age10").value
+                 var k10 = document.getElementById("k10").value
+                 var ben10 = document.getElementById("benefit10").value
+             </script>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick=probability_surviving_n(x2,n2) style="color: green;width: 250px;"value="Compute"  /> 
+             </p> 
+            
+        </div>
+         <div class="formulas">
+             <p class="description"> Temporary: the amount is given at the end of each period up to the death but for n years at most
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityEndPeriodTemp.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+            </p>
+            <p class="param"> age x = <input type="text" id="age11" name="age" size="10"> years<br/>
+                            n (term)= <input type="text" id="additiveAgem11" name="nyears" size="5">years
+                             number of payments in the year k  <input type="text" id="k11"  size="12"><br/>
+                            benefit (capital) = <input id ="benefit11" type="text" name="benef" size="6"> &euro;</p>
+            <p class="computation">
+                <script>
+                 var x11 = document.getElementById("age11").value
+                 var n11 = document.getElementById("additiveAgem11").value
+                 var k11 = document.getElementById("k11").value;
+                 var ben11 = document.getElementById("benefit11").value
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+        </div>
+        <div class="formulas">
+            <p class="description"> Defered : the amount is given at the end of each year up to the death but, with a deferment m years
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityDefPeriodEnd.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+            </p>
+            <p class="param"> age x = <input type="text" id="age12" name="age" size="10"> years<br/>
+                            differed time m= <input type="text" id="additiveAgem12" name="nyears" size="5">years
+                            number of payments in the year k  <input type="text" id="k12"  size="12"><br/>
+                            benefit (capital) = <input id ="benefit12" type="text" name="benef" size="6"> &euro;</p>
+            <p class="computation">
+                <script>
+                 var x12 = document.getElementById("age12").value
+                 var m12 = document.getElementById("additiveAgem12").value
+                 var k12 = document.getElementById("k12").value;
+                 var ben12 = document.getElementById("benefit12").value
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+        </div>
+        <div class="formulas">
+            <p class="description"> Temporary (n) and deferred(m) : the amount is given at the end of each year up to the death but, for n years at most with deferment m years.
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityTempAndDefPeriodEnd.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+            </p>
+            <p class="param"> age x = <input type="text" id="age13" name="age" size="10"> years<br/>
+                             n(term) = <input type="text" id="additiveAge13" name="nyears" size="5"> years<br/>
+                             m(deferment) <input type="text" id="additiveAgem13" name="nyears" size="5">years
+                            number of payments in the year k  <input type="text" id="k13"  size="12"><br/>
+                            benefit (capital) = <input id ="benefit13" type="text" name="benef" size="6"> &euro;</p>
+            <p class="computation">
+                <script>
+                 var x13 = document.getElementById("age13").value
+                 var n13 = document.getElementById("additiveAge13").value
+                 var m13 = document.getElementById("additiveAgem13").value
+                 var k13 = document.getElementById("k13").value;
+                 var ben13 = document.getElementById("benefit13").value
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+        </div>
+        
+        
+        
+        <div class="formulas">
+
+            <p class="description"><B>Life Annuities with several payments each year, due at the beginning of the period </B>
+                
+            </p>
+            <p class="param"></p>
+            <p class="computation"> <!-- ce sera le bouton de calcul-->
+            </p>
+          
+            
+            
+
+        </div>
+        
+         <div class="formulas">
+
+            <p class="description" id="upDeath">Up to the death : The amount is given at the beginning of each period, up to the death
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityUpDeatBegPeriod.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+              
+             
+             <p class="param"> age x =  <input type="text" id="age14" name="age" size="11"> years<br/>
+                 number of payments in the year k  <input type="text" id="k14"  size="12"><br/>
+                    benefit (capital) = <input id ="benefit14" type="text" name="benef" size="6"> &euro;</p>
+                                
+             
+             <script>
+                 var x14 = document.getElementById("age14").value
+                 var k14 = document.getElementById("k14").value
+                 var ben14 = document.getElementById("benefit14").value
+             </script>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick=probability_surviving_n(x2,n2) style="color: green;width: 250px;"value="Compute"  /> 
+             </p> 
+            
+        </div>
+         <div class="formulas">
+             <p class="description"> Temporary: the amount is given at the beginning of each period up to the death but for n years at most
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityTempBegPeriod.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+            </p>
+            <p class="param"> age x = <input type="text" id="age15" name="age" size="10"> years<br/>
+                            n (term)= <input type="text" id="additiveAgem15" name="nyears" size="5">years<br/>
+                             number of payments in the year k  <input type="text" id="k15"  size="12"><br/>
+                            benefit (capital) = <input id ="benefit15" type="text" name="benef" size="6"> &euro;</p>
+            <p class="computation">
+                <script>
+                 var x15 = document.getElementById("age15").value
+                 var n15 = document.getElementById("additiveAgem15").value
+                 var k15 = document.getElementById("k15").value
+                 var ben15 = document.getElementById("benefit15").value
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+        </div>
+        <div class="formulas">
+            <p class="description"> Defered : the amount is given at the beginning of each year up to the death but, with a deferment m years
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityDefBegPeriod.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+            </p>
+            <p class="param"> age x = <input type="text" id="age16" name="age" size="10"> years<br/>
+                            differed time m= <input type="text" id="additiveAgem16" name="nyears" size="5">years<br/>
+                             number of payments in the year k  <input type="text" id="k16"  size="12"><br/>
+                            benefit (capital) = <input id ="benefit16" type="text" name="benef" size="6"> &euro;</p>
+            <p class="computation">
+                <script>
+                 var x16 = document.getElementById("age16").value
+                 var m16 = document.getElementById("additiveAgem16").value
+                  var k16 = document.getElementById("k16").value
+                var ben16 = document.getElementById("benefit16").value
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+        </div>
+        <div class="formulas">
+            <p class="description"> Temporary (n) and deferred(m) : the amount is given at the beginning of each year up to the death but, for n years at most with deferment m years.
+                <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityDefAndTempBegPeriod.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+            </p>
+            <p class="param"> age x = <input type="text" id="age17" name="age" size="10"> years<br/>
+                             n(term) = <input type="text" id="additiveAge17" name="nyears" size="5"> years<br/>
+                             m(deferment) <input type="text" id="additiveAgem17" name="nyears" size="5">years<br/>
+                            number of payments in the year k  <input type="text" id="k17"  size="12"><br/>
+                            benefit (capital) = <input id ="benefit17" type="text" name="benef" size="6"> &euro;</p>
+            <p class="computation">
+                <script>
+                 var x17 = document.getElementById("age17").value
+                 var n17 = document.getElementById("additiveAge17").value
+                 var m17 = document.getElementById("additiveAgem17").value
+                 var k17 = document.getElementById("k17").value
+                 var ben17 = document.getElementById("benefit17").value
+                 </script>
+                <input type="button" id="compute_the_result" onclick="probability_not_surviving(x3)" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+        </div>
+        
+        
+        
+        
+        
+        
+        
+    </body>
+</html>
