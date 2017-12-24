@@ -8,7 +8,7 @@ window.set_table = function (table) {
 }
 
 window.v = function (x, r) {
-    return 1 / ((1 + r) ^ x);
+    return 1 / Math.pow((1 + r), x);
 }
 
 window.lx = function (x) {
@@ -20,7 +20,7 @@ window.d = function (x) {
 }
 
 window.D_x = function(x, r){
-    return lx(x)*(1/(1+r));
+    return lx(x)*Math.pow(1+r,x);;
 }
 
 window.C = function (x, r) {
