@@ -39,13 +39,8 @@
              <p class="param" > age x = <input id ="age1" type="text" name="age" size="10"> years<!-- ajouter champ pour entrer valeur-->
                                  term = <input id ="maturity1" type="text" name="maturity" size="5"> years<br/>
                                   benefit (capital) = <input id ="benefit1" type="text" name="benef" size="6"> &euro; </p>
-             <script>
-                 var x1 = document.getElementById("age1").value
-                 var mat1= document.getElementById("maturity1").value
-                 var ben= document.getElementById("benefit1").value
-             </script>
-             <p class="computation"><input type="button" id="compute_the_result" 
-                       onclick=probability_surviving(x1)  style="color: green; width: 250px;" value="Compute"/> </p>
+             
+             <p class="computation"><input type="button" id="pure_endowment" style="color: green; width: 250px;" value="Compute"/> </p>
              
             
         </div>
@@ -202,11 +197,10 @@
                                 
              
              <script>
-                 var x2 = document.getElementById("age2").value
-                var ben = document.getElementById("benefit2").value
+                 
              </script>
             <p class="computation">
-                <input type="button" id="compute_the_result" onclick=probability_surviving_n(x2,n2) style="color: green;width: 250px;"value="Compute"  /> 
+                <input type="button" id="upToDeath" style="color: green;width: 250px;"value="Compute"  /> 
              </p> 
             
         </div>
@@ -537,7 +531,8 @@
              </p> 
         </div>
         
-        
+        <script src="jquery.js"></script>
+    <script src="jqueryScripts.js"></script>
         
         
         
