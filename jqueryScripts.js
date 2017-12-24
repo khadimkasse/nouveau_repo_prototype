@@ -1,7 +1,7 @@
 // TO DO Set here the name of the variable w, which can be the length of the TV( -1 maybe...)
 var w = lxTab.length - 1;
 
-var r = 0.2 ; 
+var r; 
 
 window.set_table = function(table){
     lxTab= table;
@@ -13,7 +13,7 @@ window.lx = function(x){
     return lxTab[x];
 }
 window.D_x = function(x, r){
-    return lx(x)*(1/(1+r));
+    return lx(x)*Math.pow(1+r,x);
 }
 
 window.N_x = function(x, r){
@@ -108,18 +108,29 @@ $('#td').on('click', function(){
     set_table(TD);
 });
 
+// For the first time, the user have to set the value of r, or if whe wants to change it for any reason
 $('#submit_r').on('click', function(){
     var res = $('#interest_rate').val();
     r = res/100;
+    sessionStorage.setItem("rate", r);
     alert("The interest rate was set to r = " + res + "%.");
-    $('#interest_rate').val('');
+    $('#submit_r').val('');
+});
+
+// After setting the value of interest rate, he won't loose the value setted when the page reload
+$(function(){
+    r = sessionStorage.getItem("rate");
 });
 
 $('#pure_endowment').on('click', function(){ 
+    console.log('r = ', r);
     var x1 = document.getElementById("age1").value;
     var mat1= document.getElementById("maturity1").value;
     var ben= document.getElementById("benefit1").value;
-    alert(pure_endowment(parseInt(x1), parseInt(mat1), r, ben));
+    console.log('nEx = ', pure_endowment(parseInt(x1), parseInt(mat1), window.r, ben));
+    console.log('D_x = ', (1/((1+r)^parseInt(x1))));
+
+    alert(pure_endowment(parseInt(x1), parseInt(mat1), window.r, ben));
     //After the computation, let's clean the input values...
     $('#age1').val('');
     $('#maturity1').val('');
