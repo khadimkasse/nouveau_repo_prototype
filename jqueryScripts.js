@@ -1,7 +1,7 @@
 // TO DO Set here the name of the variable w, which can be the length of the TV( -1 maybe...)
-var w = lxTab.length;
-//TO DO Think about a way to choose r: user or what ?? 
-var r = 0;
+var w = lxTab.length - 1;
+
+var r = 0.2 ; 
 
 window.set_table = function(table){
     lxTab= table;
