@@ -20,7 +20,7 @@ window.d = function (x) {
 }
 
 window.D_x = function(x, r){
-    return lx(x)*Math.pow(1+r,x);;
+    return lx(x)/Math.pow(1+r,x);;
 }
 
 window.C = function (x, r) {
