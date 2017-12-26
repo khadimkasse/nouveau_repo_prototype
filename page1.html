@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Probabilities and Properties on one insured</title>
+        <link href="css_page1.css" rel="stylesheet" type="text/css" media="screen">
+      
+    </head>
+    
+    
+    <body>
+        <center> <img height="110" width="110" src="./arr_plan_page_calc.jpeg"/><p>IZI Acturial Basic Formulas : Probabilities and Properties on one insured<br/>
+            Use the table below to choose the formula you wan to use </p> 
+        </center>
+        <div class="formulas">
+
+            <p class="description">Description of the formulae
+                
+            </p>
+            <p class="param">Parameters </p>
+            <p class="computation"> Compute<!-- ce sera le bouton de calcul-->
+            </p>
+            <p class="result"> Result</p>
+            
+            
+
+        </div>
+
+        <div class="formulas">
+            <p class="alone">Survival probabilities at a given age</p>
+            
+        </div>
+        <script>
+                    function x(){
+                    var entree=document.getElementById("age1").value;
+                    //alert(entree);
+                    return entree;
+                    }
+                </script>
+         <div class="formulas">
+
+            <p class="description">Probability to survive from age x to age x+1
+                <input type="button" id="px" onclick="window.open('px.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;" value="Details" />
+             </p>
+          
+             <p class="param" > age x = <input id ="age1" type="text" name="age" size="10"><!-- ajouter champ pour entrer valeur--></p>
+             
+            <script type="text/javascript" src="static/js/read-csv.js"></script>
+    <input type="file" id="csvFileInput" onchange="handleFiles(this.files)"
+            accept=".csv">
+             <script>
+                 function handleFiles(files) {
+      // Check for the various File API support.
+      if (window.FileReader) {
+          // FileReader are supported.
+          var reader = new FileReader();
+          
+          alert((input.files[0]));
+        
+      } else {
+          alert('FileReader are not supported in this browser.');
+      }
+    }
+      </script>       
+            <script type="text/javascript" src="static/js/read-csv.js"></script>
+             
+             <input type='file' onchange='openFile(event)'>
+             <script>
+                var openFile = function(event) {
+                    var input = event.target;
+
+                    var reader = new FileReader();
+                    reader.onload = function(){
+                        var arrayBuffer = reader.result;
+
+                        console.log(arrayBuffer.byteLength);
+                       alert(reader.result);
+                    };
+                    
+                   
+                var r= reader.readAsArrayBuffer(input.files[0]);
+                   
+                   
+                };
+             </script>
+             
+              <input type="file" id="input" multiple onchange="handleFiles(this.files)">
+             <script>
+                 
+                 var inputElement = document.getElementById("input");
+inputElement.addEventListener("change", handleFiles, false);
+function handleFiles() {
+    var fileList = this.files; /* now you can work with the file list */
+    alert(fileList[0].DOMString);
+}
+             
+             </script>
+             
+             <p>
+                  <?php
+                 //lecture intégrale d'un fichier
+                 $contenu=file_get_contents("./TD88-90.csv");
+                 echo $contenu;
+                 ?> 
+             </p>
+             
+             <br><font size="2" face="Arial">Il est <?php echo $contenu; ?>.</font>
+
+             <script>
+                 
+              
+            
+
+     function calculPx() {
+         cr = csv.reader(open("/home/user/Téléchargements/maleSummary.csv","rb"));
+         alert("gggggggggggg")
+         alert(cr);
+     }
+
+            </script>
+             <p class="computation"><input type="button" id="compute_the_result" 
+                       onclick=calculPx()  style="color: green; width: 250px;" value="Compute"/> </p>
+             <p class="result">
+               
+             </p> 
+            
+        </div>
+        
+         <div class="formulas">
+
+            <p class="description">Probability to survive from age x to age x+n (you survive n years after reaching age x)
+                <input type="button" id="compute_the_result" onclick="window.open('npx.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+             <p class="param"> age x =  <input type="text" name="age" size="11"><br/>
+                                n = <input type="text" name="nyears" size="15"></p>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green;width: 250px;"value="Compute"  /> 
+             </p> <!-- ce sera le bouton de calcul-->
+            <p class="result"></p>
+            
+        </div>
+        
+        <div class="formulas">
+            <p class="description"> probability to survive at the maximum age of the mortality table 
+                <input type="button" id="compute_the_result" onclick="window.open('w.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+            <p class="param"> x= &omega; (Default value)<!-- ajouter champ pour entrer valeur--></p>
+            
+            <p class="computation">
+                <!--<input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green;"value="Compute" /> -->
+             </p> 
+            <p class="result"> 0</p>
+        </div>
+        
+         <div class="formulas">
+            <p class="alone">Death probabilities before a given age</p> 
+        </div>
+        
+         <div class="formulas">
+            <p class="description"> probability to die between age x and age x+1 
+                <input type="button" id="compute_the_result" onclick="window.open('qx.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+            <p class="param"> age x =  <input type="text" name="age" size="10"></p>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+            <p class="result"> </p>
+        </div>
+        
+          <div class="formulas">
+            <p class="description"> probability to die between age x and age x+n 
+                <input type="button" id="compute_the_result" onclick="window.open('nqx.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+            <p class="param"> age x =  <input type="text" name="age" size="11"><br/>
+                                n = <input type="text" name="nyears" size="15"></p>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+            <p class="result"> </p>
+        </div>
+        
+            <div class="formulas">
+            <p class="description"> probability to die at the maximum age of the mortality table &omega; 
+                <input type="button" id="compute_the_result" onclick="window.open('qw.html','popup','width=350,height=180,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+            <p class="param"> age x= &omega; (Default value)</p>
+            <p class="computation">
+                 
+             </p> 
+            <p class="result"> 1 </p>
+        </div>
+        
+         <div class="formulas">
+            <p class="alone">Properties</p> 
+        </div>
+        
+          <div class="formulas">
+            <p class="description"> probability of life after n years : you live from age x to age x+1 and from age x+1 to age x+2 and so on until age x+n 
+                <input type="button" id="compute_the_result" onclick="window.open('npxProp.html','popup','width=350,height=180,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text" name="age" size="11"><br/>
+                                n = <input type="text" name="nyears" size="15"></p>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+            <p class="result"> </p>
+        </div>
+        
+        <div class="formulas">
+            <p class="description"> probability of life after m+n years : you live from age x to age x+m and from age x+m to x+m+n 
+                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text" name="age" size="11"><br/>
+                                n = <input type="text" name="nyears" size="15"><br/>
+                                m= <input type="text" name="myears" size="15">
+            </p>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+            <p class="result"> </p>
+        </div>
+        
+        <div class="formulas">
+            <p class="description"> probability to stay alive until m and then die the following year i.e. before age x+m+1 
+                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text" name="age" size="11"><br/>
+                                m = <input type="text" name="myears" size="15"><br/>
+                               
+            </p>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green; width: 250px;"value="Compute" /> 
+             </p> 
+            <p class="result"> </p>
+        </div>
+        
+         <div class="formulas">
+            <p class="description"> probability to stay alive until m and then die before x+m+n 
+                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text" name="age" size="11"><br/>
+                                m = <input type="text" name="myears" size="15"><br/>
+                                n= <input type="text" name="nyears" size="15">
+                               
+            </p>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+            <p class="result"> </p>
+        </div>
+        
+        
+         <div class="formulas">
+            <p class="description"> probability to stay alive until m but not in m+1 i.e; you die before x+m+1 
+                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text" name="age" size="11"><br/>
+                                m = <input type="text" name="myears" size="15"><br/>
+                               
+            </p>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green;width: 250px;"value="Compute" /> 
+             </p> 
+            <p class="result"> </p>
+        </div>
+        
+           <div class="formulas">
+            <p class="description"> probability to stay alive until m  but not in m+n
+                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text" name="age" size="11"><br/>
+                                m = <input type="text" name="myears" size="14"><br/>
+                                n = <input type="text" name="nyears" size="15">
+                               
+            </p>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green; width: 250px;"value="Compute"  /> 
+             </p> 
+            <p class="result"> </p>
+        </div>
+        
+          <div class="line_alone">
+            <p class="alone">Death probabilities before a given age</p> 
+        </div>
+        
+           <div class="formulas">
+            <p class="description"> population 
+                <input type="button" id="compute_the_result" onclick="ouvrir une autre page qui donne les détails" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text" name="age" size="11"><br/>
+                               
+            </p>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick="sauverNomCdPostal()" style="color: green;width: 250px;"value="Compute"  style="width=100px;"/> 
+             </p>
+            <p class="result"> </p>
+        </div>
+        
+        
+        
+    </body>
+</html>
