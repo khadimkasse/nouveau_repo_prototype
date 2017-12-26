@@ -13,7 +13,7 @@ window.lx = function(x){
     return lxTab[x];
 }
 window.D_x = function(x, r){
-    return lx(x)*Math.pow(1+r,x);
+    return lx(x)/Math.pow(1+r,x);
 }
 
 window.N_x = function(x, r){
@@ -33,7 +33,7 @@ window.S_x = function(x, r){
 }
 
 window.pure_endowment = function(x, n, r, ben){
-    return ben*D_x(x+n, r)/D_x(x,r);
+    return ben*D_x(x+n, r)/D_x(x, r);
 }
 
 window.life_annuity_up_to_the_death_end = function(x, r, ben){
@@ -110,16 +110,15 @@ $('#td').on('click', function(){
 
 // For the first time, the user have to set the value of r, or if whe wants to change it for any reason
 $('#submit_r').on('click', function(){
-    var res = $('#interest_rate').val();
+    var res = parseFloat($('#interest_rate').val());
     r = res/100;
     sessionStorage.setItem("rate", r);
     alert("The interest rate was set to r = " + res + "%.");
-    $('#submit_r').val('');
 });
 
 // After setting the value of interest rate, he won't loose the value setted when the page reload
 $(function(){
-    r = sessionStorage.getItem("rate");
+    r = parseFloat(sessionStorage.getItem("rate"));
 });
 
 $('#pure_endowment').on('click', function(){ 
@@ -128,7 +127,8 @@ $('#pure_endowment').on('click', function(){
     var mat1= document.getElementById("maturity1").value;
     var ben= document.getElementById("benefit1").value;
     console.log('nEx = ', pure_endowment(parseInt(x1), parseInt(mat1), window.r, ben));
-    console.log('D_x = ', (1/((1+r)^parseInt(x1))));
+    var d = 1 + r;
+    console.log('techDF = ', 1/Math.pow(1+r,20));
 
     alert(pure_endowment(parseInt(x1), parseInt(mat1), window.r, ben));
     //After the computation, let's clean the input values...
