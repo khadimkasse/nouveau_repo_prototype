@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Life Insurance Contract</title>
+    <link href="css_page1.css" rel="stylesheet" type="text/css" media="screen">
+
+</head>
+
+
+<body>
+
+    <script>  
+
+        var lxTab = []; // TD or TV
+        var TD = []; //TD
+        var TV = []; //TV
+
+        TD[0] = 100000;
+        TD[1] = 99129;
+        TD[2] = 99057;
+        TD[3] = 99010;
+        TD[4] = 98977;
+        TD[5] = 98948;
+        TD[6] = 98921;
+        TD[7] = 98897;
+        TD[8] = 98876;
+        TD[9] = 98855;
+        TD[10] = 98835;
+        TD[11] = 98814;
+        TD[12] = 98793;
+        TD[13] = 98771;
+        TD[14] = 98745;
+        TD[15] = 98712;
+        TD[16] = 98667;
+        TD[17] = 98606;
+        TD[18] = 98520;
+        TD[19] = 98406;
+        TD[20] = 98277;
+        TD[21] = 98137;
+        TD[22] = 97987;
+        TD[23] = 97830;
+        TD[24] = 97677;
+        TD[25] = 97524;
+        TD[26] = 97373;
+        TD[27] = 97222;
+        TD[28] = 97070;
+        TD[29] = 96916;
+        TD[30] = 96759;
+        TD[31] = 96597;
+        TD[32] = 96429;
+        TD[33] = 96255;
+        TD[34] = 96071;
+        TD[35] = 95878;
+        TD[36] = 95676;
+        TD[37] = 95463;
+        TD[38] = 95237;
+        TD[39] = 94997;
+        TD[40] = 94746;
+        TD[41] = 94182;
+        TD[42] = 93868;
+        TD[43] = 93515;
+        TD[44] = 93133;
+        TD[45] = 92727;
+        TD[46] = 92295;
+        TD[47] = 91833;
+        TD[48] = 91332;
+        TD[49] = 90778;
+        TD[50] = 90171;
+        TD[51] = 89511;
+        TD[52] = 88791;
+        TD[53] = 88011;
+        TD[54] = 87165;
+        TD[55] = 86241;
+        TD[56] = 85256;
+        TD[57] = 84211;
+        TD[58] = 83083;
+        TD[59] = 81884;
+        TD[60] = 80602;
+        TD[61] = 79243;
+        TD[62] = 77807;
+        TD[63] = 76295;
+        TD[64] = 74720;
+        TD[65] = 73075;
+        TD[66] = 71366;
+        TD[67] = 69559;
+        TD[68] = 67655;
+        TD[69] = 65649;
+        TD[70] = 63543;
+        TD[71] = 61285;
+        TD[72] = 58911;
+        TD[73] = 56416;
+        TD[74] = 53818;
+        TD[75] = 51086;
+        TD[76] = 48251;
+        TD[77] = 45284;
+        TD[78] = 42203;
+        TD[79] = 39041;
+        TD[80] = 35824;
+        TD[81] = 32518;
+        TD[82] = 29220;
+        TD[83] = 25962;
+        TD[84] = 22780;
+        TD[85] = 19725;
+        TD[86] = 16843;
+        TD[87] = 14133;
+        TD[88] = 11625;
+        TD[89] = 9389;
+        TD[90] = 7438;
+        TD[91] = 5763;
+        TD[92] = 4350;
+        TD[93] = 3211;
+        TD[94] = 2315;
+        TD[95] = 1635;
+        TD[96] = 1115;
+        TD[97] = 740;
+        TD[98] = 453;
+        TD[99] = 263;
+        TD[100] = 145;
+        TD[101] = 76;
+        TD[102] = 37;
+        TD[103] = 17;
+        TD[104] = 7;
+        TD[105] = 2;
+
+        TV[0] = 100000;
+        TV[1] = 99352;
+        TV[2] = 99294;
+        TV[3] = 99261;
+        TV[4] = 99236;
+        TV[5] = 99214;
+        TV[6] = 99194;
+        TV[7] = 99177;
+        TV[8] = 99161;
+        TV[9] = 99145;
+        TV[10] = 99129;
+        TV[11] = 99112;
+        TV[12] = 99096;
+        TV[13] = 99081;
+        TV[14] = 99062;
+        TV[15] = 99041;
+        TV[16] = 99018;
+        TV[17] = 98989;
+        TV[18] = 98955;
+        TV[19] = 98913;
+        TV[20] = 98869;
+        TV[21] = 98823;
+        TV[22] = 98778;
+        TV[23] = 98734;
+        TV[24] = 98689;
+        TV[25] = 98640;
+        TV[26] = 98590;
+        TV[27] = 98537;
+        TV[28] = 98482;
+        TV[29] = 98428;
+        TV[30] = 98371;
+        TV[31] = 98310;
+        TV[32] = 98247;
+        TV[33] = 98182;
+        TV[34] = 98111;
+        TV[35] = 98031;
+        TV[36] = 97942;
+        TV[37] = 97851;
+        TV[38] = 97753;
+        TV[39] = 97648;
+        TV[40] = 97534;
+        TV[41] = 97413;
+        TV[42] = 97282;
+        TV[43] = 97138;
+        TV[44] = 96981;
+        TV[45] = 96810;
+        TV[46] = 96622;
+        TV[47] = 96424;
+        TV[48] = 96218;
+        TV[49] = 95995;
+        TV[50] = 95752;
+        TV[51] = 95488;
+        TV[52] = 95202;
+        TV[53] = 94892;
+        TV[54] = 94560;
+        TV[55] = 94215;
+        TV[56] = 93848;
+        TV[57] = 93447;
+        TV[58] = 93014;
+        TV[59] = 92545;
+        TV[60] = 92050;
+        TV[61] = 91523;
+        TV[62] = 90954;
+        TV[63] = 90343;
+        TV[64] = 89687;
+        TV[65] = 88978;
+        TV[66] = 88226;
+        TV[67] = 87409;
+        TV[68] = 86513;
+        TV[69] = 85522;
+        TV[70] = 84440;
+        TV[71] = 83251;
+        TV[72] = 81936;
+        TV[73] = 80484;
+        TV[74] = 78880;
+        TV[75] = 77104;
+        TV[76] = 75136;
+        TV[77] = 72981;
+        TV[78] = 70597;
+        TV[79] = 67962;
+        TV[80] = 65043;
+        TV[81] = 61852;
+        TV[82] = 58379;
+        TV[83] = 54614;
+        TV[84] = 50625;
+        TV[85] = 46455;
+        TV[86] = 42130;
+        TV[87] = 37738;
+        TV[88] = 33340;
+        TV[88] = 28980;
+        TV[90] = 24739;
+        TV[91] = 20704;
+        TV[92] = 16959;
+        TV[93] = 13580;
+        TV[94] = 10636;
+        TV[95] = 8118;
+        TV[96] = 6057;
+        TV[97] = 4378;
+        TV[98] = 3096;
+        TV[99] = 2184;
+        TV[100] = 1479;
+        TV[101] = 961;
+        TV[102] = 599;
+        TV[103] = 358;
+        TV[104] = 205;
+        TV[105] = 113;
+        TV[106] = 59;
+        TV[107] = 30;
+        TV[108] = 14;
+        TV[109] = 6;
+        TV[110] = 2;
+
+        lxTab = TV // by default, if not set below
+
+    </script>
+
+    <center>
+        <img height="110" width="110" src="./arr_plan_page_calc.jpeg" />
+        <p>IZI Acturial Death Insurance Contract : Insurance in case of death on one insured
+            <br/> Use the table below to choose the formula you want to use </p>
+    </center>
+
+    <!-- Here the user sets the table to use for computation-->
+    <div class="tvtd">
+        <p>Choose the default table. By default the TV table will be set.
+            <br/>
+            <p class="boutonTV">
+                <input type="button" id="tv" style="color: palevioletred;" value="TV" />
+                <input type="button" id="td" style="color: palevioletred;" value="TD" />
+            </p>
+    </div>
+
+    <div class="interestRate">
+        <p>Give a value for the interest rate(in percentage): r =
+            <input id="interest_rate" type="text" name="r" size="5"> %
+            <input type="button" id="submit_r" style="color: palevioletred;" value="Submit" </p>
+
+    </div>
+
+    <div class="formulas">
+
+        <p class="description">Description of the formulae
+
+        </p>
+        <p class="param">Parameters </p>
+        <p class="computation"> Compute
+            <!-- ce sera le bouton de calcul-->
+        </p>
+
+
+
+
+    </div>
+
+    <div class="formulas">
+        <p class="alone"> </p>
+
+    </div>
+
+    <div class="formulas"> Insurances in case of Life
+
+        <p class="description" id="PE">Pure Endowment : it's a life insurance contract designed to pay a lump sum after a specified term called the maturity
+            of the contract.
+            <input type="button" id="pe" onclick="window.open('pureEndowment.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+
+        <p class="param"> age x =
+            <input id="age1" type="text" name="age" size="10"> years
+            <!-- ajouter champ pour entrer valeur-->
+            term =
+            <input id="maturity1" type="text" name="maturity" size="5"> years
+            <br/> benefit (capital) =
+            <input id="benefit1" type="text" name="benef" size="6"> &euro; </p>
+
+        <p class="computation">
+            <input type="button" id="pure_endowment" style="color: green; width: 250px;" value="Compute" /> </p>
+
+
+    </div>
+
+
+
+
+    <div class="formulas">
+        <p class="alone">Life Annuities :
+            <br/>
+            <center>A life annuity is a contract that pays periodically a certain amount up to the death of the annuitant.
+                <br/> Generally speaking, an annuitant buys a life annuity and makes installment payments for it throughout his
+                working life.
+                <br/> A life annuity is designed to provide a stable income for the annuitant in retirement.
+            </center>
+        </p>
+
+    </div>
+    <div class="formulas">
+
+        <p class="description">
+            <B>Life Annuities due at the end of the year</B>
+
+        </p>
+        <p class="param"></p>
+        <p class="computation">
+            <!-- ce sera le bouton de calcul-->
+        </p>
+
+
+
+
+    </div>
+
+    <div class="formulas">
+
+        <p class="description" id="upDeath">Up to the death : The amount is given at the end of each year, up to the death
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityUpTodeathEndY.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+
+
+        <p class="param"> age x =
+            <input type="text" id="age2" name="age" size="11"> years
+            <br/> benefit (capital) =
+            <input id="benefit2" type="text" name="benef" size="6"> &euro; </p>
+
+
+        <script>
+
+        </script>
+        <p class="computation">
+            <input type="button" id="upToDeath" style="color: green;width: 250px;" value="Compute" />
+        </p>
+
+    </div>
+    <div class="formulas">
+        <p class="description"> Temporary: the amount is given at the end of each year up to the death but for n years at most
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityTempEndY.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+        <p class="param"> age x =
+            <input type="text" id="age3" name="age" size="10"> years
+            <br/> n (term)=
+            <input type="text" id="additiveAgem3" name="nyears" size="5">years
+            <br/> benefit (capital) =
+            <input id="benefit3" type="text" name="benef" size="6"> &euro;
+        </p>
+        <p class="computation">
+            <input type="button" id="life_annuity_temporary_end" style="color: green;width: 250px;" value="Compute" />
+        </p>
+    </div>
+    <div class="formulas">
+        <p class="description"> Defered : the amount is given at the end of each year up to the death but, with a deferment m years
+            <input type="button" id="compute_the_result" onclick="window.open('lifeannuityDeffEndY.html','popup','width=360,height=360,left=300,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+        <p class="param"> age x =
+            <input type="text" id="age4" name="age" size="10"> years
+            <br/> differed time m=
+            <input type="text" id="additiveAgem4" name="nyears" size="5">years
+            <br/> benefit (capital) =
+            <input id="benefit4" type="text" name="benef" size="6"> &euro;</p>
+        <p class="computation">
+            <input type="button" id="life_annuity_deferred_end" style="color: green;width: 250px;" value="Compute" />
+        </p>
+    </div>
+    <div class="formulas">
+        <p class="description"> Temporary (n) and deferred(m) : the amount is given at the end of each year up to the death but, for n years at most
+            with deferment m years.
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityTempAndDefEndY.html','popup','width=360,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+        <p class="param"> age x =
+            <input type="text" id="age5" name="age" size="10"> years
+            <br/> n(term) =
+            <input type="text" id="additiveAge5" name="nyears" size="5"> years
+            <br/> m(deferment)
+            <input type="text" id="additiveAgem5" name="nyears" size="5">years
+            <br/> benefit (capital) =
+            <input id="benefit5" type="text" name="benef" size="6"> &euro;
+        </p>
+        <p class="computation">
+            <input type="button" id="life_annuity_temporary_and_deferred_end" style="color: green;width: 250px;" value="Compute" />
+        </p>
+    </div>
+
+    <div class="formulas">
+
+        <p class="description">
+            <B>Life Annuities due at the beginning of the year</B>
+
+        </p>
+        <p class="param"></p>
+        <p class="computation">
+            <!-- ce sera le bouton de calcul-->
+        </p>
+
+
+
+
+    </div>
+
+    <div class="formulas">
+
+        <p class="description" id="upDeath">Up to the death : The amount is given at the beginning of each year, up to the death
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityUpTodeathBegY.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+
+
+        <p class="param"> age x =
+            <input type="text" id="age6" name="age" size="11"> years
+            <br/> benefit (capital) =
+            <input id="benefit6" type="text" name="benef" size="6"> &euro;</p>
+
+        <p class="computation">
+            <input type="button" id="life_annuity_up_to_the_death_beg" style="color: green;width: 250px;" value="Compute" />
+        </p>
+
+    </div>
+    <div class="formulas">
+        <p class="description"> Temporary: the amount is given at the beginning of each year up to the death but for n years at most
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityTempBegY.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+        <p class="param"> age x =
+            <input type="text" id="age7" name="age" size="10"> years
+            <br/> n (term)=
+            <input type="text" id="additiveAgem7" name="nyears" size="5">years
+            <br/> benefit (capital) =
+            <input id="benefit7" type="text" name="benef" size="6"> &euro;</p>
+        <p class="computation">
+
+            <input type="button" id="life_annuity_temporary_beg" style="color: green;width: 250px;" value="Compute" />
+        </p>
+    </div>
+    <div class="formulas">
+        <p class="description"> Defered : the amount is given at the beginning of each year up to the death but, with a deferment m years
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityDefBegY.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+        <p class="param"> age x =
+            <input type="text" id="age8" name="age" size="10"> years
+            <br/> differed time m=
+            <input type="text" id="additiveAgem8" name="nyears" size="5">years
+            <br/> benefit (capital) =
+            <input id="benefit8" type="text" name="benef" size="6"> &euro;
+        </p>
+        <p class="computation">
+
+            <input type="button" id="life_annuity_deferred_beg" style="color: green;width: 250px;" value="Compute" />
+        </p>
+    </div>
+    <div class="formulas">
+        <p class="description"> Temporary (n) and deferred(m) : the amount is given at the beginning of each year up to the death but, for n years
+            at most with deferment m years.
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityTempAndDefBegY.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+        <p class="param"> age x =
+            <input type="text" id="age9" name="age" size="10"> years
+            <br/> n(term) =
+            <input type="text" id="additiveAge9" name="nyears" size="5"> years
+            <br/> m(deferment)
+            <input type="text" id="additiveAgem9" name="nyears" size="5">years
+            <br/> benefit (capital) =
+            <input id="benefit9" type="text" name="benef" size="6"> &euro;</p>
+        <p class="computation">
+
+            <input type="button" id="life_annuity_temporary_and_deferred_beg" style="color: green;width: 250px;" value="Compute" />
+        </p>
+    </div>
+    <div class="formulas">
+
+        <p class="description">
+            <B>Life Annuities with several payments each year, due at the end of the period </B>
+
+        </p>
+        <p class="param"></p>
+        <p class="computation">
+            <!-- ce sera le bouton de calcul-->
+        </p>
+
+
+
+
+    </div>
+
+    <div class="formulas">
+
+        <p class="description" id="upDeath">Up to the death : The amount is given at the end of each period, up to the death
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityEndPeriodUpdeath.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+
+
+        <p class="param"> age x =
+            <input type="text" id="age10" name="age" size="11"> years number of payments in the year k
+            <input type="text" id="k10" size="12">
+            <br/> benefit (capital) =
+            <input id="benefit10" type="text" name="benef" size="6"> &euro;</p>
+
+        <p class="computation">
+            <input type="button" id="life_annuity_up_to_the_death_several_end" style="color: green;width: 250px;" value="Compute" />
+        </p>
+
+    </div>
+    <div class="formulas">
+        <p class="description"> Temporary: the amount is given at the end of each period up to the death but for n years at most
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityEndPeriodTemp.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+        <p class="param"> age x =
+            <input type="text" id="age11" name="age" size="10"> years
+            <br/> n (term)=
+            <input type="text" id="additiveAgem11" name="nyears" size="5">years number of payments in the year k
+            <input type="text" id="k11" size="12">
+            <br/> benefit (capital) =
+            <input id="benefit11" type="text" name="benef" size="6"> &euro;</p>
+        <p class="computation">
+
+            <input type="button" id="life_annuity_temporary_several_end" style="color: green;width: 250px;" value="Compute" />
+        </p>
+    </div>
+    <div class="formulas">
+        <p class="description"> Defered : the amount is given at the end of each year up to the death but, with a deferment m years
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityDefPeriodEnd.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+        <p class="param"> age x =
+            <input type="text" id="age12" name="age" size="10"> years
+            <br/> differed time m=
+            <input type="text" id="additiveAgem12" name="nyears" size="5">years number of payments in the year k
+            <input type="text" id="k12" size="12">
+            <br/> benefit (capital) =
+            <input id="benefit12" type="text" name="benef" size="6"> &euro;</p>
+        <p class="computation">
+
+            <input type="button" id="life_annuity_deferred_several_end" style="color: green;width: 250px;" value="Compute" />
+        </p>
+    </div>
+    <div class="formulas">
+        <p class="description"> Temporary (n) and deferred(m) : the amount is given at the end of each year up to the death but, for n years at most
+            with deferment m years.
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityTempAndDefPeriodEnd.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+        <p class="param"> age x =
+            <input type="text" id="age13" name="age" size="10"> years
+            <br/> n(term) =
+            <input type="text" id="additiveAge13" name="nyears" size="5"> years
+            <br/> m(deferment)
+            <input type="text" id="additiveAgem13" name="nyears" size="5">years number of payments in the year k
+            <input type="text" id="k13" size="12">
+            <br/> benefit (capital) =
+            <input id="benefit13" type="text" name="benef" size="6"> &euro;</p>
+        <p class="computation">
+
+            <input type="button" id="life_annuity_temporary_and_deferred_several_end" style="color: green;width: 250px;" value="Compute"
+            />
+        </p>
+    </div>
+
+
+
+    <div class="formulas">
+
+        <p class="description">
+            <B>Life Annuities with several payments each year, due at the beginning of the period </B>
+
+        </p>
+        <p class="param"></p>
+        <p class="computation">
+            <!-- ce sera le bouton de calcul-->
+        </p>
+
+
+
+
+    </div>
+
+    <div class="formulas">
+
+        <p class="description" id="upDeath">Up to the death : The amount is given at the beginning of each period, up to the death
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityUpDeatBegPeriod.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+
+
+        <p class="param"> age x =
+            <input type="text" id="age14" name="age" size="11"> years
+            <br/> number of payments in the year k
+            <input type="text" id="k14" size="12">
+            <br/> benefit (capital) =
+            <input id="benefit14" type="text" name="benef" size="6"> &euro;</p>
+
+        <p class="computation">
+            <input type="button" id="life_annuity_up_to_the_death_several_beg" style="color: green;width: 250px;" value="Compute" />
+        </p>
+
+    </div>
+    <div class="formulas">
+        <p class="description"> Temporary: the amount is given at the beginning of each period up to the death but for n years at most
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityTempBegPeriod.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+        <p class="param"> age x =
+            <input type="text" id="age15" name="age" size="10"> years
+            <br/> n (term)=
+            <input type="text" id="additiveAgem15" name="nyears" size="5">years
+            <br/> number of payments in the year k
+            <input type="text" id="k15" size="12">
+            <br/> benefit (capital) =
+            <input id="benefit15" type="text" name="benef" size="6"> &euro;</p>
+        <p class="computation">
+
+            <input type="button" id="life_annuity_temporary_several_beg" style="color: green;width: 250px;" value="Compute" />
+        </p>
+    </div>
+    <div class="formulas">
+        <p class="description"> Defered : the amount is given at the beginning of each year up to the death but, with a deferment m years
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityDefBegPeriod.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+        <p class="param"> age x =
+            <input type="text" id="age16" name="age" size="10"> years
+            <br/> differed time m=
+            <input type="text" id="additiveAgem16" name="nyears" size="5">years
+            <br/> number of payments in the year k
+            <input type="text" id="k16" size="12">
+            <br/> benefit (capital) =
+            <input id="benefit16" type="text" name="benef" size="6"> &euro;</p>
+        <p class="computation">
+
+            <input type="button" id="life_annuity_deferred_several_beg" style="color: green;width: 250px;" value="Compute" />
+        </p>
+    </div>
+    <div class="formulas">
+        <p class="description"> Temporary (n) and deferred(m) : the amount is given at the beginning of each year up to the death but, for n years
+            at most with deferment m years.
+            <input type="button" id="compute_the_result" onclick="window.open('lifeAnnuityDefAndTempBegPeriod.html','popup','width=450,height=360,left=200,top=200,scrollbars=1')"
+                style="color: palevioletred;" value="Details" />
+        </p>
+        <p class="param"> age x =
+            <input type="text" id="age17" name="age" size="10"> years
+            <br/> n(term) =
+            <input type="text" id="additiveAge17" name="nyears" size="5"> years
+            <br/> m(deferment)
+            <input type="text" id="additiveAgem17" name="nyears" size="5">years
+            <br/> number of payments in the year k
+            <input type="text" id="k17" size="12">
+            <br/> benefit (capital) =
+            <input id="benefit17" type="text" name="benef" size="6"> &euro;</p>
+        <p class="computation">
+
+            <input type="button" id="life_annuity_temporary_and_deferred_several_beg" style="color: green;width: 250px;" value="Compute"
+            />
+        </p>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script src="jqueryScripts.js"></script>
+
+
+
+
+
+</body>
+
+</html>
