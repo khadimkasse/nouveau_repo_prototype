@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Insurance in case of Life and Death</title>
+        <link href="css_page1.css" rel="stylesheet" type="text/css" media="screen">
+      
+    </head>
+   
+    
+    <body>
+        <center> <img height="110" width="110" src="./arr_plan_page_calc.jpeg"/><p>IZI Insurance in case of Life and Death<br/>
+            Use the table below to choose the formula you want to use </p> 
+        </center>
+
+              
+     <script>  
+         
+         var lxTab= new Array(); // TD
+       
+         lxTab[0]=100000;
+         lxTab[1]=99129;
+         lxTab[2]=99057;
+         lxTab[3]=99010;
+         lxTab[4]=98977;
+         lxTab[5]=98948;
+         lxTab[6]=98921;
+         lxTab[7]=98897;
+         lxTab[8]=98876;
+         lxTab[9]=98855;
+         lxTab[10]=98835;
+         lxTab[11]=98814;
+         lxTab[12]=98793;
+         lxTab[13]=98771;
+         lxTab[14]=98745;
+         lxTab[15]=98712;
+         lxTab[16]=98667;
+         lxTab[17]=98606;
+         lxTab[18]=98520;
+         lxTab[19]=98406;
+         lxTab[20]=98277;
+         lxTab[21]=98137;
+         lxTab[22]=97987;
+         lxTab[23]=97830;
+         lxTab[24]=97677;
+         lxTab[25]=97524;
+         lxTab[26]=97373;
+         lxTab[27]=97222;
+         lxTab[28]=97070;
+         lxTab[29]=96916;
+         lxTab[30]=96759;
+         lxTab[31]=96597;
+         lxTab[32]=96429;
+         lxTab[33]=96255;
+         lxTab[34]=96071;
+         lxTab[35]=95878;
+         lxTab[36]=95676;
+         lxTab[37]=95463;
+         lxTab[38]=95237;
+         lxTab[39]=94997;
+         lxTab[40]=94746;
+         lxTab[41]=94182;
+         lxTab[42]=93868;
+         lxTab[43]=93515;
+         lxTab[44]=93133;
+         lxTab[45]=92727;
+         lxTab[46]=92295;
+         lxTab[47]=91833;
+         lxTab[48]=91332;
+         lxTab[49]=90778;
+         lxTab[50]=90171;
+         lxTab[51]=89511;
+         lxTab[52]=88791;
+         lxTab[53]=88011;
+         lxTab[54]=87165;
+         lxTab[55]=86241;
+         lxTab[56]=85256;
+         lxTab[57]=84211;
+         lxTab[58]=83083;
+         lxTab[59]=81884;
+         lxTab[60]=80602;
+         lxTab[61]=79243;
+         lxTab[62]=77807;
+         lxTab[63]=76295;
+         lxTab[64]=74720;
+         lxTab[65]=73075;
+         lxTab[66]=71366;
+         lxTab[67]=69559;
+         lxTab[68]=67655;
+         lxTab[69]=65649;
+         lxTab[70]=63543;
+         lxTab[71]=61285;
+         lxTab[72]=58911;
+         lxTab[73]=56416;
+         lxTab[74]=53818;
+         lxTab[75]=51086;
+         lxTab[76]=48251;
+         lxTab[77]=45284;
+         lxTab[78]=42203;
+         lxTab[79]=39041;
+         lxTab[80]=35824;
+         lxTab[81]=32518;
+         lxTab[82]=29220;
+         lxTab[83]=25962;
+         lxTab[84]=22780;
+         lxTab[85]=19725;
+         lxTab[86]=16843;
+         lxTab[87]=14133;
+         lxTab[88]=11625;
+         lxTab[89]=9389;
+         lxTab[90]=7438;
+         lxTab[91]=5763;
+         lxTab[92]=4350;
+         lxTab[93]=3211;
+         lxTab[94]=2315;
+         lxTab[95]=1635;
+         lxTab[96]=1115;
+         lxTab[97]=740;
+         lxTab[98]=453;
+         lxTab[99]=263;
+         lxTab[100]=145;
+         lxTab[101]=76;
+         lxTab[102]=37;
+         lxTab[103]=17;
+         lxTab[104]=7;
+         lxTab[105]=2;
+
+        //fonctions de base 
+        
+        function D_x(x, r){
+            return lx(x)*(1/(1+r));
+        }
+        
+        function M_x(x, r){ 
+            var M = 0;
+            var w =106;;
+            for (var i = 0; i<w-x; i++){ M = M + C_x(x+i,r); }
+            return M;
+        }
+        
+        function endowment (x, n, C, r){
+            return (C*(D_x( x+n, r)+(M_x(x,r)-M_x(x+n,r))))/D_x(x,r);
+        }
+    
+        function combined_endowment (x, n, C1, C2, r){
+            return (C1*D_x( x+n, r)+C2*(M_x(x,r)-M_x(x+n,r)))/D_x(x,r);
+        } 
+         
+
+     </script>
+
+             <script>
+                 var x1 = document.getElementById(  "age1").value
+             </script>
+      
+         <div class="formulas">
+
+            <p class="description">Endowment
+                <input type="button" id="compute_the_result" onclick="window.open('endowment.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+              
+             
+             <p class="param"> age x =  <input type="text" id="age2" name="age" size="11"> years<br/>
+                                n = <input type="text"  id="additiveAge2" name="nyears" size="10"> years (more) <br/>
+                                benefit C =  <input type="text" id="benefit2" name="benef1" size="11"></p>
+             
+             <script>
+                 var x2 = document.getElementById("age2").value
+                 var n2 = document.getElementById("additiveAge2").value
+                 var b2 = document.getElementById("benefit2").value
+             </script>
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick=combined_endowment(x2,n2,b2,r) style="color: green;width: 250px;"value="Compute"  /> 
+             </p> <!-- ce sera le bouton de calcul-->
+          
+            
+        </div>
+        
+        <div class="formulas">
+            <p class="description"> Combined Endowment 
+                <input type="button" id="compute_the_result" onclick="window.open('CombinedEndowment.html','popup','width=300,height=160,left=200,top=200,scrollbars=1')" style="color: palevioletred;"value="Details" />
+             </p>
+            
+            <p class="param"> age x =  <input type="text" id="age2" name="age" size="11"> years<br/>
+                                n = <input type="text"  id="additiveAge2" name="nyears" size="10"> years (more) <br/>
+                                benefit C<sub>1</sub> =  <input type="text" id="benefit21" name="benef1" size="11"><br/>
+                                benefit C<sub>2</sub> =  <input type="text" id="benefit22" name="benef2" size="11"></p>
+             
+             <script>
+                 var x2 = document.getElementById("age2").value
+                 var n2 = document.getElementById("additiveAge2").value
+                 var b21 = document.getElementById("benefit21").value
+                 var b22 = document.getElementById("benefit22").value
+             </script>
+            
+            <p class="computation">
+                <input type="button" id="compute_the_result" onclick=endowment(x2,n2,b21, b22,r) style="color: green;width: 250px;"value="Compute"  />  
+             </p>
+        </div>
+        
+        
+    </body>
+</html>
