@@ -5,7 +5,7 @@ var r;
 
 window.set_table = function(table){
     lxTab= table;
-    w = lxTab.length;
+    w = lxTab.length - 1;
     alert("The table was correctly set");
 }
 
@@ -116,21 +116,16 @@ $('#submit_r').on('click', function(){
     alert("The interest rate was set to r = " + res + "%.");
 });
 
-// After setting the value of interest rate, he won't loose the value setted when the page reload
+// After setting the value of interest rate, he won't loose the value set when the page reload
 $(function(){
     r = parseFloat(sessionStorage.getItem("rate"));
 });
 
 $('#pure_endowment').on('click', function(){ 
-    console.log('r = ', r);
     var x1 = document.getElementById("age1").value;
     var mat1= document.getElementById("maturity1").value;
     var ben= document.getElementById("benefit1").value;
-    console.log('nEx = ', pure_endowment(parseInt(x1), parseInt(mat1), window.r, ben));
-    var d = 1 + r;
-    console.log('techDF = ', 1/Math.pow(1+r,20));
-
-    alert(pure_endowment(parseInt(x1), parseInt(mat1), window.r, ben));
+    alert(((pure_endowment(parseInt(x1), parseInt(mat1), window.r, ben)).toFixed(2)).toFixed(2));
     //After the computation, let's clean the input values...
     $('#age1').val('');
     $('#maturity1').val('');
@@ -140,7 +135,7 @@ $('#pure_endowment').on('click', function(){
 $('#upToDeath').on('click', function() {
     var x2 = document.getElementById("age2").value;
     var ben2 = document.getElementById("benefit2").value;
-    alert(life_annuity_up_to_the_death_end(parseInt(x2), r, ben2));
+    alert((life_annuity_up_to_the_death_end(parseInt(x2), r, ben2)).toFixed(2));
     $('#age2').val('');
     $('#benefit2').val('');
 });
@@ -149,7 +144,7 @@ $('#life_annuity_temporary_end').on('click', function() {
     var x3 = document.getElementById("age3").value;
     var m3 = document.getElementById("additiveAgem3").value;
     var ben3 = document.getElementById("benefit3").value;
-    alert(life_annuity_temporary_end(parseInt(x3), parseInt(m3), r, ben3));
+    alert((life_annuity_temporary_end(parseInt(x3), parseInt(m3), r, ben3)).toFixed(2));
     $('#age3').val('');
     $('#additiveAgem3').val('');
     $('#benefit3').val('');
@@ -159,7 +154,7 @@ $('#life_annuity_temporary_end').on('click', function() {
     var x4 = document.getElementById("age4").value;
     var m4 = document.getElementById("additiveAgem4").value;
     var ben4 = document.getElementById("benefit4").value;
-    alert(life_annuity_deferred_end(parseInt(x4), parseInt(m4), r, ben4));
+    alert(((life_annuity_deferred_end(parseInt(x4), parseInt(m4), r, ben4))..toFixed(2)).toFixed(2));
     $('#age4').val('');
     $('#additiveAgem4').val('');
     $('#benefit4').val('');
@@ -171,7 +166,7 @@ $('#life_annuity_temporary_end').on('click', function() {
     var n5 = document.getElementById("additiveAge5").value;
     var m5 = document.getElementById("additiveAgem5").value;
     var ben5 = document.getElementById("benefit5").value;
-    alert(life_annuity_temporary_and_deferred_end(parseInt(x5), parseInt(n5), parseInt(m5), r, ben5));
+    alert((life_annuity_temporary_and_deferred_end(parseInt(x5), parseInt(n5), parseInt(m5), r, ben5)).toFixed(2));
     $('#age5').val('');
     $('#additiveAge5').val('');
     $('#additiveAgem5').val('');
@@ -181,7 +176,7 @@ $('#life_annuity_temporary_end').on('click', function() {
  $('#life_annuity_up_to_the_death_beg').on('click', function(){
     var x6 = document.getElementById("age6").value;
     var ben6 = document.getElementById("benefit6").value;
-    alert(life_annuity_up_to_the_death_beg(parseInt(x6), r, ben6));
+    alert((life_annuity_up_to_the_death_beg(parseInt(x6), r, ben6)).toFixed(2));
     $('#age6').val('');
     $('#benefit6').val('');
  });
@@ -190,7 +185,7 @@ $('#life_annuity_temporary_end').on('click', function() {
     var x7 = document.getElementById("age7").value;
     var m7 = document.getElementById("additiveAgem7").value;
     var ben7 = document.getElementById("benefit7").value;   
-    alert(life_annuity_temporary_beg(parseInt(x7), parseInt(m7), r, ben7));
+    alert((life_annuity_temporary_beg(parseInt(x7), parseInt(m7), r, ben7)).toFixed(2));
     $('#age7').val(''); 
     $('#additiveAgem7').val(''); 
     $('#benefit7').val(''); 
@@ -200,7 +195,7 @@ $('#life_annuity_temporary_end').on('click', function() {
     var x8 = document.getElementById("age8").value;
     var m8 = document.getElementById("additiveAgem8").value;
     var ben8 = document.getElementById("benefit8").value;
-    alert(life_annuity_deferred_beg(parseInt(x8), parseInt(m8), r, ben8));
+    alert((life_annuity_deferred_beg(parseInt(x8), parseInt(m8), r, ben8)).toFixed(2));
     $('#age8').val(''); 
     $('#additiveAgem8').val(''); 
     $('#benefit8').val(''); 
@@ -211,7 +206,7 @@ $('#life_annuity_temporary_and_deferred_beg').on('click', function(){
     var n9 = document.getElementById("additiveAge9").value;
     var m9 = document.getElementById("additiveAgem9").value;
     var ben9 = document.getElementById("benefit9").value;
-    alert(life_annuity_temporary_and_deferred_beg(parseInt(x9), parseInt(n9), parseInt(m9), r, ben9));
+    alert((life_annuity_temporary_and_deferred_beg(parseInt(x9), parseInt(n9), parseInt(m9), r, ben9)).toFixed(2));
     $('#age9').val(''); 
     $('#additiveAge9').val(''); 
     $('#additiveAgem9').val(''); 
@@ -222,7 +217,7 @@ $('#life_annuity_up_to_the_death_several_end').on('click', function(){
     var x10 = document.getElementById("age10").value;
     var k10 = document.getElementById("k10").value;
     var ben10 = document.getElementById("benefit10").value ;
-    alert(life_annuity_up_to_the_death_several_end(parseInt(x10), parseInt(k10), r, ben10));
+    alert((life_annuity_up_to_the_death_several_end(parseInt(x10), parseInt(k10), r, ben10)).toFixed(2));
     $('#age10').val(''); 
     $('#k10').val(''); 
     $('#benefit10').val('');
@@ -233,7 +228,7 @@ $('#life_annuity_temporary_several_end').on('click', function(){
     var n11 = document.getElementById("additiveAgem11").value;
     var k11 = document.getElementById("k11").value;
     var ben11 = document.getElementById("benefit11").value;
-    alert(life_annuity_temporary_several_end(parseInt(x11), parseInt(n11), parseInt(k11), r, ben11));
+    alert((life_annuity_temporary_several_end(parseInt(x11), parseInt(n11), parseInt(k11), r, ben11)).toFixed(2));
     $('#age11').val('');
     $('#additiveAgem11').val('');
     $('#k11').val('');
@@ -245,7 +240,7 @@ $('#life_annuity_deferred_several_end').on('click', function(){
     var m12 = document.getElementById("additiveAgem12").value;
     var k12 = document.getElementById("k12").value;
     var ben12 = document.getElementById("benefit12").value;
-    alert(life_annuity_deferred_several_end(parseInt(x12), parseInt(m12), parseInt(k12), r, ben12));
+    alert((life_annuity_deferred_several_end(parseInt(x12), parseInt(m12), parseInt(k12), r, ben12)).toFixed(2));
     $('#age12').val('');
     $('#additiveAgem12').val('');
     $('#k12').val('');
@@ -258,7 +253,7 @@ $('#life_annuity_temporary_and_deferred_several_end').on('click', function(){
     var m13 = document.getElementById("additiveAgem13").value;
     var k13 = document.getElementById("k13").value;
     var ben13 = document.getElementById("benefit13").value;
-    alert(life_annuity_temporary_and_deferred_several_end(parseInt(x13), parseInt(n13), parseInt(k13), parseInt(m13), r, ben13));
+    alert((life_annuity_temporary_and_deferred_several_end(parseInt(x13), parseInt(n13), parseInt(k13), parseInt(m13), r, ben13)).toFixed(2));
     $('#age13').val('');
     $('#additiveAge13').val('');
     $('#additiveAgem13').val('');
@@ -270,7 +265,7 @@ $('#life_annuity_up_to_the_death_several_beg').on('click', function(){
     var x14 = document.getElementById("age14").value;
     var k14 = document.getElementById("k14").value;
     var ben14 = document.getElementById("benefit14").value ;
-    alert(life_annuity_up_to_the_death_several_beg(parseInt(x14), parseInt(k14), r, ben14));
+    alert((life_annuity_up_to_the_death_several_beg(parseInt(x14), parseInt(k14), r, ben14)).toFixed(2));
     $('#age14').val('');   
     $('#k14').val('');   
     $('#benefit14').val('');   
@@ -281,7 +276,7 @@ $('#life_annuity_temporary_several_beg').on('click', function(){
     var n15 = document.getElementById("additiveAgem15").value;
     var k15 = document.getElementById("k15").value;
     var ben15 = document.getElementById("benefit15").value;
-    alert(life_annuity_temporary_several_beg(parseInt(x15), parseInt(n15), parseInt(k15), r, ben15));
+    alert((life_annuity_temporary_several_beg(parseInt(x15), parseInt(n15), parseInt(k15), r, ben15)).toFixed(2));
     $('#age15').val(''); 
     $('#additiveAgem15').val(''); 
     $('#k15').val(''); 
@@ -293,7 +288,7 @@ $('#life_annuity_deferred_several_beg').on('click', function(){
     var m16 = document.getElementById("additiveAgem16").value;
     var k16 = document.getElementById("k16").value;
     var ben16 = document.getElementById("benefit16").value;
-    alert(life_annuity_deferred_several_beg(parseInt(x16), parseInt(m16), parseInt(k16), r, ben16));
+    alert((life_annuity_deferred_several_beg(parseInt(x16), parseInt(m16), parseInt(k16), r, ben16)).toFixed(2));
     $('#age16').val(''); 
     $('#additiveAgem16').val(''); 
     $('#k16').val(''); 
@@ -306,7 +301,7 @@ $('#life_annuity_temporary_and_deferred_several_beg').on('click', function(){
     var m17 = document.getElementById("additiveAgem17").value;
     var k17 = document.getElementById("k17").value;
     var ben17 = document.getElementById("benefit17").value;
-    alert(life_annuity_temporary_and_deferred_several_beg(parseInt(x17), parseInt(n17), parseInt(k17), parseInt(m17), r, ben17));
+    alert((life_annuity_temporary_and_deferred_several_beg(parseInt(x17), parseInt(n17), parseInt(k17), parseInt(m17), r, ben17)).toFixed(2));
     $('#age17').val(''); 
     $('#additiveAge17').val(''); 
     $('#additiveAgem17').val(''); 

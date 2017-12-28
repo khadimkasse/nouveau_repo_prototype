@@ -1,9 +1,9 @@
 var w = lxTab.length - 1;
-var r = 0.2;
+var r ;
 
 window.set_table = function (table) {
     lxTab = table;
-    w = lxTab.length;
+    w = lxTab.length - 1;
     alert("The table was correctly set");
 }
 
@@ -77,16 +77,22 @@ $('#td').on('click', function(){
 });
 
 $('#submit_r').on('click', function(){
-    var res = $('#interest_rate').val();
+    var res = parseFloat($('#interest_rate').val());
     r = res/100;
+    sessionStorage.setItem("rate", r);
     alert("The interest rate was set to r = " + res + "%.");
-    $('#interest_rate').val('');
+});
+
+// After setting the value of interest rate, he won't loose the value set when the page reload
+$(function(){
+    r = parseFloat(sessionStorage.getItem("rate"));
 });
 
 $('#whole_life').on('click', function () {
+    console.log('w = ', w); 
     var x1 = document.getElementById("age1").value;
     var ben1 = document.getElementById("benefit1").value;
-    alert(whole_life(parseInt(x1), r, ben1));
+    alert((whole_life(parseInt(x1), r, ben1)).toFixed(2));
     $('#age1').val('');
     $('#benefit1').val('');
 });
@@ -95,7 +101,7 @@ $('#term_insurance').on('click', function () {
     var x2 = document.getElementById("age2").value;
     var n2 = document.getElementById("additiveAge2").value;
     var ben2 = document.getElementById("benefit2").value; 
-    alert(term_insurance(parseInt(x2), r, parseInt(n2), ben2));
+    alert((term_insurance(parseInt(x2), r, parseInt(n2), ben2)).toFixed(2));
     $('#age2').val('');
     $('#additiveAge2').val('');
     $('#benefit2').val('');
@@ -107,7 +113,7 @@ $('#term_insurance_defered').on('click', function () {
     var m3 = document.getElementById("additiveAgem3").value;
     var n3 = document.getElementById("additiveAge3").value;
     var ben3 = document.getElementById("benefit3").value;
-    alert(term_insurance_defered(parseInt(x3), r, parseInt(m3), parseInt(n3), ben3));
+    alert((term_insurance_defered(parseInt(x3), r, parseInt(m3), parseInt(n3), ben3)).toFixed(2));
     $('#age3').val('');
     $('#additiveAgem3').val('');
     $('#additiveAge3').val('');
@@ -118,7 +124,7 @@ $('#whole_life_differed').on('click', function () {
     var x4 = document.getElementById("age4").value;
     var m4 = document.getElementById("additiveAgem4").value;
     var ben4 = document.getElementById("benefit4").value   ;
-    alert(whole_life_differed(parseInt(x4), r, parseInt(m4), ben4));
+    alert((whole_life_differed(parseInt(x4), r, parseInt(m4), ben4)).toFixed(2));
     $('#age4').val('');
     $('#additiveAgem4').val('');
     $('#benefit4').val('');
@@ -128,7 +134,7 @@ $('#term_insurance_with_increasing_life_annuities').on('click', function () {
     var x5 = document.getElementById("age5").value;
     var n5 = document.getElementById("additiveAge5").value;
     var ben5 = document.getElementById("benefit5").value;
-    alert(term_insurance_with_increasing_life_annuities(parseInt(x5), r, parseInt(n5),  ben5));
+    alert((term_insurance_with_increasing_life_annuities(parseInt(x5), r, parseInt(n5),  ben5)).toFixed(2));
     $('#age5').val('');
     $('#additiveAge5').val('');
     $('#benefit5').val('');
@@ -138,17 +144,10 @@ $('#term_insurance_with_decreasing_life_annuities').on('click', function () {
     var x6 = document.getElementById("age6").value;
     var n6 = document.getElementById("additiveAge6").value;
     var ben6 = document.getElementById("benefit6").value;
-    alert(term_insurance_with_decreasing_life_annuities(parseInt(x6), r, parseInt(n6), ben6));
+    alert((term_insurance_with_decreasing_life_annuities(parseInt(x6), r, parseInt(n6), ben6)).toFixed(2));
     $('#age6').val('');
     $('#additiveAge6').val('');
     $('#benefit6').val('');
-});
-
-$('#id').on('click', function () {
-
-    alert((parseInt(x1), r, ben1));
-    $('#age1').val('');
-    $('#benefit1').val('');
 });
 
 
